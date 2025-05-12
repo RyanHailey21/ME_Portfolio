@@ -9,7 +9,7 @@ const { title = "Portfolio" } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Personal portfolio showcasing mechanical engineering projects and skills" />
@@ -21,8 +21,13 @@ const { title = "Portfolio" } = Astro.props;
 		</style>
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<style is:global>
+			html {
+				scroll-behavior: smooth;
+			}
+		</style>
 	</head>
-	<body class="bg-gradient-dark text-gray-100 min-h-screen font-geist">
+	<body class="bg-gradient-dark text-gray-100 font-geist">
 		<div class="fixed inset-0 bg-gradient-glow opacity-50"></div>
 		<Navigation />
 		<div class="pt-16 relative">

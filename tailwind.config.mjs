@@ -7,18 +7,18 @@ export default {
         'geist': ['Geist', 'sans-serif'],
       },
       colors: {
-        'portfolio-blue': '#3B82F6',
-        'portfolio-purple': '#8B5CF6',
+        'portfolio-blue': '#60A5FA', 
+        'portfolio-purple': '#A78BFA', 
         'dark': {
-          DEFAULT: '#0A0F1C',
-          'lighter': '#1E293B',
-          'card': '#1F2937'
+          DEFAULT: '#0A0A0A', // Onyx-like very dark gray
+          'lighter': '#141414', // Slightly lighter, still very dark
+          'card': '#1F1F1F'    // Darker card background
         }
       },
       backgroundImage: {
-        'gradient-portfolio': 'linear-gradient(to right, #3B82F6, #8B5CF6)',
-        'gradient-dark': 'linear-gradient(135deg, #0A0F1C 0%, #1E293B 100%)',
-        'gradient-glow': 'radial-gradient(circle at center, rgba(59,130,246,0.15) 0%, rgba(139,92,246,0.15) 25%, transparent 50%)',
+        'gradient-portfolio': 'linear-gradient(to right, #60A5FA, #A78BFA)', // Will use updated colors
+        'gradient-dark': 'linear-gradient(135deg, #0A0A0A 0%, #141414 100%)', // Updated with new dark colors
+        'gradient-glow': 'radial-gradient(circle at center, rgba(96, 165, 250, 0.15) 0%, rgba(167, 139, 250, 0.15) 25%, transparent 50%)', // Updated RGB values
       },
       animation: {
         'gradient-x': 'gradient-x 15s ease infinite',
