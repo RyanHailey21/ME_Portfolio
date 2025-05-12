@@ -1,0 +1,42 @@
+---
+import Navigation from '../components/Navigation.astro';
+
+interface Props {
+	title?: string;
+}
+
+const { title = "Portfolio" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Personal portfolio showcasing mechanical engineering projects and skills" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+		<style>
+			@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Boldonse&family=Geist:wght@100..900&family=Patrick+Hand&display=swap');
+		</style>
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class="bg-gradient-dark text-gray-100 min-h-screen font-geist">
+		<div class="fixed inset-0 bg-gradient-glow opacity-50"></div>
+		<Navigation />
+		<div class="pt-16 relative">
+			<slot />
+		</div>
+		<script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+		<script is:inline>
+			document.addEventListener('DOMContentLoaded', () => {
+				AOS.init({
+					duration: 800,
+					once: false,
+					mirror: true
+				});
+			});
+		</script>
+	</body>
+</html>

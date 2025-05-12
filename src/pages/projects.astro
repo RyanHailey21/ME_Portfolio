@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const allTags = ['CAD', 'Code', 'FEA', 'Matlab', 'Python', 'C', 'C++', 'Miscellaneous'];
+
+// Fetch all MDX files from the projects directory
+const projectPosts = await Astro.glob('./projects/*.mdx');
+
+const projects = projectPosts.map(post => ({
+  title: post.frontmatter.title,
+  description: post.frontmatter.description, // This is the short description from MDX frontmatter
+  image: post.frontmatter.image,
+  tags: post.frontmatter.tags,
+  slug: post.url, // Use the URL provided by Astro.glob()
+}));
+---
+
+<Layout title="Projects | Portfolio">
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-4xl font-bold mb-8 bg-gradient-portfolio text-transparent bg-clip-text">Projects</h1>
+    
+    <div class="mb-8">
+      <div class="flex flex-wrap gap-2" id="tagFilters">
+        {allTags.map((tag) => (
+          <button
+            class="px-4 py-2 rounded-full border-2 border-portfolio-blue text-gray-300 hover:bg-gradient-portfolio hover:text-white transition-colors"
+            data-tag={tag}
+          >
+            {tag}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
+      {projects.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </main>
+</Layout>
+
+<script>
+  const tagButtons = document.querySelectorAll('[data-tag]');
+  const projectCards = document.querySelectorAll('article');
+  const activeFilters = new Set();
+
+  tagButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tag = button.getAttribute('data-tag');
+      button.classList.toggle('bg-gradient-portfolio');
+      button.classList.toggle('text-white');
+
+      if (activeFilters.has(tag)) {
+        activeFilters.delete(tag);
+      } else {
+        activeFilters.add(tag);
+      }
+
+      filterProjects();
+    });
+  });
+
+  function filterProjects() {
+    projectCards.forEach(card => {
+      const cardTags = Array.from(card.querySelectorAll('span')).map(span => span.textContent);
+      const shouldShow = activeFilters.size === 0 || cardTags.some(tag => activeFilters.has(tag));
+      card.parentElement.style.display = shouldShow ? 'block' : 'none';
+    });
+  }
+</script>
