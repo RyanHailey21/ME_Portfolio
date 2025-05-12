@@ -16,9 +16,9 @@ export default {
         }
       },
       backgroundImage: {
-        'gradient-portfolio': 'linear-gradient(to right, #60A5FA, #A78BFA)', // Will use updated colors
+        'gradient-portfolio': 'linear-gradient(to right, #60A5FA,rgb(28, 216, 216))', // Will use updated colors
         'gradient-dark': 'linear-gradient(135deg, #0A0A0A 0%, #141414 100%)', // Updated with new dark colors
-        'gradient-glow': 'radial-gradient(circle at center, rgba(96, 165, 250, 0.15) 0%, rgba(167, 139, 250, 0.15) 25%, transparent 50%)', // Updated RGB values
+        'gradient-glow': 'linear-gradient(to bottom, rgba(96, 165, 250, 0.2), rgba(167, 139, 250, 0.2), transparent)', 
       },
       animation: {
         'gradient-x': 'gradient-x 15s ease infinite',
