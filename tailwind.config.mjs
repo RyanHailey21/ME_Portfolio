@@ -7,8 +7,8 @@ export default {
         'geist': ['Geist', 'sans-serif'],
       },
       colors: {
-        'portfolio-blue': '#60A5FA', 
-        'portfolio-purple': '#A78BFA', 
+        'portfolio-blue': ' #60A5FA', 
+        'portfolio-teal': ' #1cd8d8', 
         'dark': {
           DEFAULT: '#0A0A0A', // Onyx-like very dark gray
           'lighter': '#141414', // Slightly lighter, still very dark
@@ -16,7 +16,7 @@ export default {
         }
       },
       backgroundImage: {
-        'gradient-portfolio': 'linear-gradient(to right, #60A5FA,rgb(28, 216, 216))', // Will use updated colors
+        'gradient-portfolio': 'linear-gradient(to right, #60a5fa, #1cd8d8)', // Will use updated colors
         'gradient-dark': 'linear-gradient(135deg, #0A0A0A 0%, #141414 100%)', // Updated with new dark colors
         'gradient-glow': 'linear-gradient(to bottom, rgba(96, 165, 250, 0.2), rgba(167, 139, 250, 0.2), transparent)', 
       },

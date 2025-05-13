@@ -1,18 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
 
 const allTags = ['CAD', 'Code', 'FEA', 'Matlab', 'Python', 'C', 'C++', 'Miscellaneous'];
 
-// Fetch all MDX files from the projects directory
-const projectPosts = await Astro.glob('./projects/*.mdx');
+// Define Project interface
+interface Project {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  slug: string;
+}
 
-const projects = projectPosts.map(post => ({
-  title: post.frontmatter.title,
-  description: post.frontmatter.description, // This is the short description from MDX frontmatter
-  image: post.frontmatter.image,
-  tags: post.frontmatter.tags,
-  slug: post.url, // Use the URL provided by Astro.glob()
+// Fetch all MDX files from the projects directory
+const projectPosts = await getCollection('projects');
+
+const projects: Project[] = projectPosts.map((post: any) => ({
+  title: post.data.title,
+  description: post.data.description, // This is the short description from MDX frontmatter
+  image: post.data.image,
+  tags: post.data.tags,
+  slug: `/projects/${post.slug}`, // Ensure slug is always a string
 }));
 ---
 
@@ -34,8 +44,14 @@ const projects = projectPosts.map(post => ({
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
-      {projects.map((project) => (
-        <ProjectCard {...project} />
+      {projects.map((project: Project) => (
+        <ProjectCard 
+        title={project.title}
+        description={project.description}
+        image={project.image}
+        tags={project.tags}
+        slug={project.slug}
+        />
       ))}
     </div>
   </main>
@@ -66,7 +82,9 @@ const projects = projectPosts.map(post => ({
     projectCards.forEach(card => {
       const cardTags = Array.from(card.querySelectorAll('span')).map(span => span.textContent);
       const shouldShow = activeFilters.size === 0 || cardTags.some(tag => activeFilters.has(tag));
-      card.parentElement.style.display = shouldShow ? 'block' : 'none';
+      if (card.parentElement) {
+        card.parentElement.style.display = shouldShow ? 'block' : 'none';
+      }
     });
   }
 </script>
