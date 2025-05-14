@@ -11,8 +11,7 @@ export interface Props {
 }
 
 const { title, description, image, tags, slug } = Astro.props;
-const relativeSlug = slug.startsWith('/') ? slug.substring(1) : slug;
-const finalHref = baseUrl + relativeSlug;
+const finalHref = baseUrl + slug
 ---
 
 <a href={finalHref} class="block group">

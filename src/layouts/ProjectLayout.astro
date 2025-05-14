@@ -1,6 +1,7 @@
 ---
 import Layout from './Layout.astro'; // Main site layout
-
+const baseUrl = import.meta.env.BASE_URL;
+const projectUrl = `${baseUrl}/projects`;
 export interface Frontmatter {
   title: string;
   description: string;
@@ -28,7 +29,7 @@ const imageSrc = typeof image === 'string' ? image : image.src;
 
 <Layout title={`${title} | Portfolio`}>
   <main class="container mx-auto px-4 py-8">
-    <a href="/projects" class="inline-flex items-center text-portfolio-blue hover:text-portfolio-teal mb-6">
+    <a href= {projectUrl} class="inline-flex items-center text-portfolio-blue hover:text-portfolio-teal mb-6">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L4.414 9H17a1 1 0 110 2H4.414l5.293 5.293a1 1 0 010 1.414z" clip-rule="evenodd" />
       </svg>
@@ -54,24 +55,45 @@ const imageSrc = typeof image === 'string' ? image : image.src;
         {videoUrl && (
           <div class="mb-6">
             <h2 class="text-2xl font-semibold mb-4 text-gray-100">Project Video</h2>
-            {typeof videoUrl === 'object' && videoUrl.src ? (
-              // Local video (imported asset)
-              <video controls class="w-full rounded-lg aspect-video">
-                <source src={(videoUrl as ImageMetadata).src} type={getVideoType((videoUrl as ImageMetadata).src)} />
-                Your browser does not support the video tag.
-              </video>
-            ) : typeof videoUrl === 'string' ? (
-              // External video (e.g., YouTube embed)
-              <div class="relative pb-[56.25%] h-0 overflow-hidden max-w-full"> {/* 16:9 Aspect Ratio */}
-                <iframe 
-                  src={videoUrl} 
-                  frameborder="0" 
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                  allowfullscreen
-                  class="absolute top-0 left-0 w-full h-full rounded-lg"
-                ></iframe>
-              </div>
-            ) : null}
+            {(() => {
+              let finalVideoSrc = '';
+              if (typeof videoUrl === 'object' && videoUrl.src) {
+                // Local video (imported asset)
+                finalVideoSrc = (videoUrl as ImageMetadata).src; // Already processed by Astro
+              } else if (typeof videoUrl === 'string') {
+                if (videoUrl.startsWith('/')) {
+                  // Local video (string path from frontmatter)
+                  finalVideoSrc = baseUrl + videoUrl;
+                } else {
+                  // External video (e.g., YouTube embed)
+                  finalVideoSrc = videoUrl;
+                }
+              }
+
+              if (finalVideoSrc) {
+                if (finalVideoSrc.startsWith('/')) { // Local video path
+                  return (
+                    <video controls class="w-full rounded-lg aspect-video">
+                      <source src={finalVideoSrc} type={getVideoType(finalVideoSrc)} />
+                      Your browser does not support the video tag.
+                    </video>
+                  );
+                } else { // External video URL
+                  return (
+                    <div class="relative pb-[56.25%] h-0 overflow-hidden max-w-full"> {/* 16:9 Aspect Ratio */}
+                      <iframe 
+                        src={finalVideoSrc} 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen
+                        class="absolute top-0 left-0 w-full h-full rounded-lg"
+                      ></iframe>
+                    </div>
+                  );
+                }
+              }
+              return null;
+            })()}
           </div>
         )}
 
