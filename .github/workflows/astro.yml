@@ -67,10 +67,17 @@ jobs:
         run: |
           ${{ steps.detect-package-manager.outputs.runner }} astro build
         working-directory: ${{ env.BUILD_PATH }}
+
+      - name: Restructure artifact for ME_Portfolio base
+        run: |
+          mkdir gh-pages-artifact
+          mv ${{ env.BUILD_PATH }}/dist gh-pages-artifact/ME_Portfolio
+        working-directory: ${{ github.workspace }} # Ensure commands run from workspace root
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ env.BUILD_PATH }}/dist
+          path: gh-pages-artifact # Uploads the contents of gh-pages-artifact (i.e., the ME_Portfolio folder)
 
   deploy:
     environment:
