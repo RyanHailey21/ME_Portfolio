@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-import type { ImageFunction } from 'astro:content';
+
 
 export interface Props {
   title: string;
   description: string;
-  image: ImageFunction;
+  image: ImageMetadata;
   tags: string[];
   slug: string;
 }
