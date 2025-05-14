@@ -1,4 +1,5 @@
 ---
+import profilePhoto from '../assets/images/Profile Photo.png';
 ---
 
 <section class="relative py-20">
@@ -39,7 +40,7 @@
         <div class="relative animate-float">
           <div class="absolute -inset-4 bg-gradient-portfolio rounded-full blur-3xl opacity-30 animate-pulse"></div>
           <img 
-            src="/src/assets/images/Profile Photo.png"
+            src={profilePhoto.src}
             alt="Profile" 
             class="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-white/20 shadow-xl mx-auto hover:border-portfolio-blue/50 transition-all duration-300"
           />
