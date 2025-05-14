@@ -5,6 +5,6 @@ import mdx from '@astrojs/mdx';
 
 export default defineConfig({
   site: 'https://RyanHailey21.github.io', 
-  base: '/ME_Portofolio/', 
+  base: '/ME_Portfolio/', 
   integrations: [tailwind(), mdx()]
 });
