@@ -4,7 +4,7 @@ import mdx from '@astrojs/mdx';
 
 
 export default defineConfig({
-  site: 'https://ryanhailey21.github.io', 
-  base: '/ME_Portofolio', 
+  site: 'https://RyanHailey21.github.io', 
+  base: '/ME_Portofolio/', 
   integrations: [tailwind(), mdx()]
 });
