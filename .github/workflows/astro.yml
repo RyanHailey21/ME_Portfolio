@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "project" # Set to the subdirectory containing your Astro project
+  BUILD_PATH: "PortFolioSite" # Set to the subdirectory containing your Astro project
   # BUILD_PATH: subfolder
 
 jobs:
@@ -71,9 +71,27 @@ jobs:
 
       - name: Restructure artifact for ME_Portfolio base
         run: |
-          mkdir gh-pages-artifact
-          mv ${{ env.BUILD_PATH }}/dist gh-pages-artifact/ME_Portfolio
-        working-directory: ${{ github.workspace }} # Ensure commands run from workspace root
+          set -e
+          SOURCE_DIST_DIR="${{ github.workspace }}/${{ env.BUILD_PATH }}/dist"
+          TARGET_ARTIFACT_SUBDIR="${{ github.workspace }}/gh-pages-artifact/ME_Portfolio"
+
+          echo "Source dist directory: ${SOURCE_DIST_DIR}"
+          if [ ! -d "${SOURCE_DIST_DIR}" ] || [ -z "$(ls -A "${SOURCE_DIST_DIR}")" ]; then
+            echo "Error: Source dist directory is missing or empty!"
+            ls -la "${{ github.workspace }}/${{ env.BUILD_PATH }}/" # List contents of project dir for context
+            exit 1
+          fi
+          
+          echo "Cleaning up and creating artifact directory structure..."
+          rm -rf "${{ github.workspace }}/gh-pages-artifact" 
+          mkdir -p "${TARGET_ARTIFACT_SUBDIR}"
+          
+          echo "Copying contents from ${SOURCE_DIST_DIR} to ${TARGET_ARTIFACT_SUBDIR}..."
+          cp -a "${SOURCE_DIST_DIR}/." "${TARGET_ARTIFACT_SUBDIR}/"
+          
+          echo "Contents of ${TARGET_ARTIFACT_SUBDIR} after copy:"
+          ls -la "${TARGET_ARTIFACT_SUBDIR}"
+        # working-directory defaults to ${{ github.workspace }}, paths are absolute
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
