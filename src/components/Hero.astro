@@ -2,6 +2,7 @@
 import profilePhoto from '../assets/images/Profile Photo.png';
 const baseUrl = import.meta.env.BASE_URL
 const projectsUrl = `${baseUrl}/projects`;
+const aboutUrl = `${baseUrl}/#about`;
 ---
 
 <section class="relative py-20">
@@ -31,7 +32,7 @@ const projectsUrl = `${baseUrl}/projects`;
             </span>
           </a>
           <a 
-            href="/#about" 
+            href={aboutUrl}
             class="group inline-block px-8 py-4 bg-dark-card text-white rounded-lg border-2 border-portfolio-blue/30 hover:border-portfolio-blue transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-portfolio-blue/20 font-semibold"
           >
             Learn More
