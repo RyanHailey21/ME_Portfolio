@@ -1,5 +1,7 @@
 ---
 import profilePhoto from '../assets/images/Profile Photo.png';
+const baseUrl = import.meta.env.BASE_URL
+const projectsUrl = `${baseUrl}/projects`;
 ---
 
 <section class="relative py-20">
@@ -18,7 +20,7 @@ import profilePhoto from '../assets/images/Profile Photo.png';
         </p>
         <div class="flex gap-4">
           <a 
-            href="/projects" 
+            href={projectsUrl} 
             class="group inline-block px-8 py-4 bg-gradient-portfolio text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-portfolio-blue/20 font-semibold"
           >
             <span class="flex items-center gap-2">
