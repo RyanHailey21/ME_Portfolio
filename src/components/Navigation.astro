@@ -1,16 +1,20 @@
 ---
+const baseUrl = import.meta.env.BASE_URL; // Should be /ME_Portfolio/
+const homeLink = baseUrl; // For root, BASE_URL itself is usually correct
+const projectsLink = `${baseUrl}projects`;
+const aboutLink = `${baseUrl}#about`;
 ---
 <nav class="fixed w-full z-50 bg-dark/50 backdrop-blur-xl border-b border-gray-800/50 shadow-lg">
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center h-16">
-      <a href="/" class="text-xl font-bold bg-gradient-portfolio text-transparent bg-clip-text">
+      <a href={homeLink} class="text-xl font-bold bg-gradient-portfolio text-transparent bg-clip-text">
         Ryan Hailey
       </a>
       <div class="flex items-center space-x-8">
         <div class="hidden md:flex space-x-6">
-          <a href="/" class="text-gray-300 hover:text-portfolio-blue transition-colors">Home</a>
-          <a href= "/#about" class="text-gray-300 hover:text-portfolio-blue transition-colors">About</a>
-          <a href="/projects" class="text-gray-300 hover:text-portfolio-blue transition-colors">Projects</a>
+          <a href={homeLink} class="text-gray-300 hover:text-portfolio-blue transition-colors">Home</a>
+          <a href= {aboutLink} class="text-gray-300 hover:text-portfolio-blue transition-colors">About</a>
+          <a href={projectsLink} class="text-gray-300 hover:text-portfolio-blue transition-colors">Projects</a>
         </div>
         <div class="flex items-center space-x-4">
           <a href="https://github.com/RyanHailey21" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:text-portfolio-blue transition-colors">
