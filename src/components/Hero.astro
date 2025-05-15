@@ -10,12 +10,32 @@ const aboutUrl = `${baseUrl}/#about`;
   <div class="container mx-auto px-4 relative">
     <div class="flex flex-col md:flex-row items-center gap-12">
       <div class="md:w-1/2" data-aos="fade-right">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 bg-gradient-portfolio text-transparent bg-clip-text animate-gradient-x">
-          Hi, My name is Ryan
+        <h1 class="flex items-center gap-3 text-4xl md:text-6xl font-bold mb-6">
+          <span class="bg-gradient-portfolio text-transparent bg-clip-text animate-gradient-x">
+            Hi, My name is Ryan
+          </span>
+          <span class="inline-block align-middle animate-wave text-5xl md:text-7xl select-none" aria-label="Waving hand" role="img" style="display:inline-block;transform-origin:70% 70%;">
+            👋
+          </span>
         </h1>
-        <h1 class="text-4xl">
-          👋
-        </h1>
+        <style>
+          @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+          }
+          .animate-wave {
+            animation: wave 2s infinite;
+            display: inline-block;
+            transform-origin: 70% 70%;
+            filter: none;
+          }
+        </style>
         <p class="text-2xl text-gray-200 mb-8 leading-relaxed">
           Current interests include robotics, automation, lifting wieghts and longevity. 
           I'm a little obsessed wtih learning how things work... <br> (but I swear it's healthy lol)
