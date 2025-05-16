@@ -1,0 +1,71 @@
+---
+title: 'Suspension System Estimation'
+description: 'Developed a method to estimate suspension system parameters using experimental data and modeling.'
+image: '../../assets/images/projects/suspensionsystemestimation/Suspension1.jpeg'
+tags: ['Code', 'Modeling']
+technologies: ['Python', 'MATLAB', 'System Identification', 'Data Analysis']
+githubUrl: ''
+videoUrl: ''
+---
+
+import {Image} from 'astro:assets';
+import Suspension2 from '../../assets/images/projects/suspensionsystemestimation/Suspension2.jpeg';
+
+# Suspension System Estimation
+
+## Overview
+
+This project focuses on estimating the parameters of a suspension system by leveraging experimental data and advanced modeling techniques.
+
+<Image src={Suspension2} alt="Suspension System Plot" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+Using MATLAB, I processed real-world measurements to identify system dynamics, fit transfer functions, and analyze damping and frequency characteristics. The workflow demonstrates my ability to combine data analysis, signal processing, and control theory to extract meaningful insights from physical systems. This approach is valuable for engineering applications where accurate modeling and parameter estimation are critical for design and optimization.
+
+## Approach
+
+- **Data Acquisition:** Collected experimental data from a suspension system.
+- **Signal Processing:** Used MATLAB to analyze the input (shake table) and output (mass) signals.
+- **System Identification:** Applied frequency response and curve fitting to estimate the transfer function.
+- **Parameter Extraction:** Analyzed poles, damping, and frequency characteristics.
+
+## Example MATLAB Workflow
+
+```matlab
+SuspensionData=readmatrix('SuspData.xlsx');
+t=SuspensionData(:,1);r=SuspensionData(:,2);y=SuspensionData(:,3);
+figure(1)
+plot(t,r,'r',t,y,'k:','LineWidth',3);
+xlabel('Time, s','FontSize',18,'FontWeight','bold')
+ylabel('Displacement, m','FontSize',18,'FontWeight','bold')
+legend('shake table','mass',"fontsize",18,"FontWeight","bold")
+title('Student ID 1001876127','FontSize',18,'FontWeight','bold')
+xlim([0 2])
+grid
+[Gxx,Gyy,Gxy,Mag,Phase,CohF,FRF,f]=csdf(2^13,r,y,0.001,3);
+[Num,Den]=frfcfit(FRF,f,14,4);
+Y_s=tf(Num,Den)
+damp(Y_s);
+
+%output
+Y_s =
+ 
+    -0.5521 s^3 + 22.38 s^2 + 2.231e04 s + 2.86e05
+  --------------------------------------------------
+  s^4 + 26.62 s^3 + 2353 s^2 + 3.074e04 s + 2.843e05
+ 
+Continuous-time transfer function.
+Model Properties
+                                                                       
+         Pole              Damping       Frequency      Time Constant  
+                                       (rad/seconds)      (seconds)    
+                                                                       
+ -7.12e+00 + 9.43e+00i     6.03e-01       1.18e+01         1.40e-01    
+ -7.12e+00 - 9.43e+00i     6.03e-01       1.18e+01         1.40e-01    
+ -6.19e+00 + 4.47e+01i     1.37e-01       4.51e+01         1.62e-01    
+ -6.19e+00 - 4.47e+01i     1.37e-01       4.51e+01         1.62e-01    
+>> 
+```
+
+## Results
+
+The identified transfer function and its properties provide insight into the dynamic behavior of the suspension system, including damping ratios and natural frequencies. This enables better design and optimization for real-world engineering applications.
