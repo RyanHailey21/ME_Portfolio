@@ -66,3 +66,45 @@ Model Properties
 ## Results
 
 The identified transfer function and its properties provide insight into the dynamic behavior of the suspension system, including damping ratios and natural frequencies. This enables better design and optimization for real-world engineering applications.
+
+### 1. Frequency Response Plots
+
+#### Magnitude Plot
+
+- Shows how the suspension system reacts to different road frequencies.
+- **Peaks:** Frequencies where the car will vibrate or “bounce” the most (possible discomfort).
+- **Dips:** Frequencies that are suppressed by the suspension.
+
+#### Phase Plot
+
+- Shows how the timing (phase) of the car body’s movement lags behind the road input.
+- **Sudden phase changes:** Align with resonance frequencies (system's natural response points).
+
+#### Practical Use
+
+- Compare model and real-world system to ensure the model predicts actual behavior.
+- Validate suspension tuning before moving to costly prototypes.
+
+### 2. Pole, Damping, Frequency, and Time Constant Table
+
+| Pole                        | Damping | Frequency (rad/s) | Time Constant (s) | Practical Meaning                                                                 |
+|-----------------------------|---------|-------------------|-------------------|-----------------------------------------------------------------------------------|
+| -7.12 + 9.43i, -7.12 - 9.43i| 0.603   | 11.8              | 0.14              | Main ride mode: Moderate damping (good comfort), natural bounce of the car         |
+| -6.19 + 44.7i, -6.19 - 44.7i| 0.137   | 45.1              | 0.162             | High-frequency mode: Low damping (may cause "buzz" or harshness if excited)        |
+
+### What These Results Mean Practically
+
+#### Comfort
+
+- The first mode (~1.88 Hz or 11.8 rad/s) is in the typical “ride comfort” range.
+- The damping ratio (0.603) suggests the car won’t be too bouncy or too stiff—likely a comfortable ride.
+
+#### Noise/Harshness
+
+- The second mode (~7.18 Hz or 45.1 rad/s) has a much lower damping ratio (0.137), which means if this mode is excited (e.g., sharp road inputs), it could lead to a harsh or noisy ride.
+- This frequency might correspond to vibrations felt in the seat or steering wheel.
+
+#### Design/Improvement
+
+- If the low-damping high-frequency mode is a problem, engineers may increase damping or adjust mass/spring properties to suppress it.
+- Matching the estimated and actual frequency responses means the model is reliable for further tuning.
