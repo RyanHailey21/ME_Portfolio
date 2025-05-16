@@ -2,8 +2,8 @@
 title: 'Suspension System Estimation'
 description: 'Developed a method to estimate suspension system parameters using experimental data and modeling.'
 image: '../../assets/images/projects/suspensionsystemestimation/Suspension1.jpeg'
-tags: ['Code', 'Modeling']
-technologies: ['Python', 'MATLAB', 'System Identification', 'Data Analysis']
+tags: ['Code', 'Matlab']
+technologies: ['MATLAB', 'Excel', 'System Identification', 'Data Analysis']
 githubUrl: ''
 videoUrl: ''
 ---
@@ -11,15 +11,13 @@ videoUrl: ''
 import {Image} from 'astro:assets';
 import Suspension2 from '../../assets/images/projects/suspensionsystemestimation/Suspension2.jpeg';
 
-# Suspension System Estimation
-
 ## Overview
 
 This project focuses on estimating the parameters of a suspension system by leveraging experimental data and advanced modeling techniques.
 
 <Image src={Suspension2} alt="Suspension System Plot" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
 
-Using MATLAB, I processed real-world measurements to identify system dynamics, fit transfer functions, and analyze damping and frequency characteristics. The workflow demonstrates my ability to combine data analysis, signal processing, and control theory to extract meaningful insights from physical systems. This approach is valuable for engineering applications where accurate modeling and parameter estimation are critical for design and optimization.
+Using MATLAB, I processed real-world measurements from a csv file to identify system dynamics, fit transfer functions, and analyze damping and frequency characteristics. The workflow demonstrates my ability to combine data analysis, signal processing, and control theory to extract meaningful insights from physical systems. This approach is valuable for engineering applications where accurate modeling and parameter estimation are critical for design and optimization.
 
 ## Approach
 
@@ -28,8 +26,7 @@ Using MATLAB, I processed real-world measurements to identify system dynamics, f
 - **System Identification:** Applied frequency response and curve fitting to estimate the transfer function.
 - **Parameter Extraction:** Analyzed poles, damping, and frequency characteristics.
 
-## Example MATLAB Workflow
-
+## MATLAB Code
 ```matlab
 SuspensionData=readmatrix('SuspData.xlsx');
 t=SuspensionData(:,1);r=SuspensionData(:,2);y=SuspensionData(:,3);
