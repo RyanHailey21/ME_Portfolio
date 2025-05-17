@@ -1,0 +1,49 @@
+---
+title: 'This Website'
+description: 'Custom coded website built with Astro Framework'
+image: '../../assets/images/projects/thiswebsite/ThisWebsite.jpg'
+tags: ['Code', 'JavaScript']
+technologies: ['JavaScript', 'Astro', 'VS Code', 'TypeScript', 'HTML', 'Tailwind CSS', 'AOS animation']
+githubUrl: 'https://github.com/RyanHailey21/ME_Portfolio'
+videoUrl: ''
+---
+import {Image} from 'astro:assets';
+import AstroPic from '../../assets/images/projects/thiswebsite/Astro.jpg';
+import GithubPages from '../../assets/images/projects/thiswebsite/GithubPages.jpg';
+
+# Overview
+
+## This Site was built with the Astro dev framework
+A static site rendering language that utilizes TypeScript and pre processing to deliver ultra fast static content to the client. 
+
+
+
+Basically, this means you can still do the all of the cool functionality stuff that **JavaScript** and **TypeScript** allow you to do, without having to wait for the load time at all!
+This means near instant content for the user and zero wait time (in contrast to slow wordpress sites)
+
+<Image src= {AstroPic} alt= "Astro framework logo" style= "max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Deployment
+This site is deployed to Github Pages. **Why?** Simple really. It is a **FREE** hosting service. So you can utilize unlimited static site cloud hosting as long as you have your code repository on github.
+You can check out the repo using the link at the end of the page!
+<Image src= {GithubPages} alt= "Github Pages logo" style= "max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Features
+Outside of the cool Astro stuff that we have already discussed, there are a few more things that I want to highlight about this site that I find to be cool. <br/>
+The site uses custom **Tailwind CSS**, which allows for extensible styling site-wide, and control over every single hex code used.<br/>
+There is also a custom **favicon** (the little image in the left corner at the top of your browser tab). Not massively complicated to make, but I thought it was neat learning how to customize it through the HTML head. <br/>
+<div className="my-0"/>
+I got to use Astro's new **Content Collections** feature to programmatically make project pages, without having to go and manually create each new page every time I want to post a project.
+This is massively useful and I highly recommend you go check out Astro's stuff if you ever need to code a website!
+<div className="my-0"/>
+[Learn more about Astro →](https://astro.build)
+
+I also got to play around with some of the new AI coding tools to help build this project. My university offers GitHub Copilot for free for students. I have been enjoying using agent mode in VS Code Insiders build edition. The models I primarily used to help me out here were the new (as of the time of writing this) Gemini 2.5 Pro 05-06 Preview, and GPT-4.1 from OpenAI.
+<div className="my-0px"/>
+It really is pretty incredible how much these things can expedite a coding workflow. Using various **MCP servers**, I can pull in real-time documentation for the tech stack that I am using and do more high-level thinking rather than rote syntax memorization.
+<div className="my-0px"/>
+Gemini 2.5 Pro is a large reasoning model, so the output is slow, but it can handle a lot of context and do "harder" tasks. I was actually very impressed with GPT-4.1. It's a tiny fine-tuned model built for coding, and tiny models mean very fast inference speeds, so you get the response back instantly.<br/>
+It does struggle a bit with cross-file edits (as you would expect for a small parameter model), but it really does exceptionally well with 1-3 file operations (if you are using a programming language that it has been trained on).
+
+### Takeaways
+Overall this was a very enjoyable project. I look forward to maintaining the site and learning more about web dev.
