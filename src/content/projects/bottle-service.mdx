@@ -1,14 +1,14 @@
 ---
 title: 'Shaker Bottle Design, Manufacturing, and Market Analysis'
-description: 'Developed a method to estimate suspension system parameters using experimental data and modeling.'
-image: '../../assets/images/projects/suspensionsystemestimation/Suspension1.jpeg'
-tags: ['Code', 'Matlab']
-technologies: ['MATLAB', 'Excel', 'System Identification', 'Data Analysis']
+description: 'Designed and implemented a plan to bring an innovative shaker bottle to market.'
+image: '../../assets/images/projects/bottleservice/WaterBottleRender.jpg'
+tags: ['CAD', 'Solidworks']
+technologies: ['Solidworks', 'Excel', 'Word', 'A lot of Research']
 githubUrl: ''
 videoUrl: ''
 ---
 
-import {Image} from 'astro:assets';
+import { Image } from 'astro:assets';
 // Use the exact filenames and order as in the bottleservice folder:
 import Image1 from '../../assets/images/projects/bottleservice/image1.jpeg';
 import Image2 from '../../assets/images/projects/bottleservice/image2.png';
@@ -33,387 +33,265 @@ import Image20 from '../../assets/images/projects/bottleservice/image20.jpeg';
 import Image21 from '../../assets/images/projects/bottleservice/image21.png';
 import Image22 from '../../assets/images/projects/bottleservice/image22.png';
 
+# MAE 3344 Manufacturing Group Project
 
-<div>
-<h1 align="center"><a name="_Hlk195966541"></a><b><span>MAE
-3344 Manufacturing Group Project</span></b></h1>
-<h1 align="center"><span>Bottle Service </span></h1>
-<h1 align="center"><span>Group 4</span></h1>
-<p><span></span></p>
-<h3 align="center"><b><span>Members:<u></u></span></b></h3>
-<p></p>
-<p align="center"><span>Om
-Patel</span></p>
-<p align="center"><span>Matthew
-Slovak</span></p>
-<p align="center"><span>Christopher
-Brown</span></p>
-<p align="center"><span>Ryan
-Hailey</span></p>
-<p align="center"><span>Juan
-Orduna</span></p>
-<p align="center"><span>Brian
-Shipman</span></p>
-<p align="center"><span>Nicholas
-Proni</span></p>
-<p><span></span></p>
-<p><b><span></span></b></p>
-<p><b><span></span></b></p>
-<p><b><span></span></b></p>
-<p><b><span></span></b></p>
-<p><b><span></span></b></p>
-<b><span><br clear="all"/>
-</span></b>
-<p><b><span></span></b></p>
-<h2><span>Bottle:</span><span></span></h2>
-<p><b>Drawing:</b></p>
-<p align="center">
-  <Image src={Image1} alt="Bottle Drawing 1" style="max-width: 525px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-  <Image src={Image2} alt="Bottle Drawing 2" style="max-width: 520px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p></p>
-<p></p>
-<p><b>Material:</b> PP</p>
-<p>Reasoning for Material: PP is a cheap and durable material
-that can withstand repeated impact from the shaker ball and allows viewing of
-liquid level. PP is FDA approved for holding liquids and preferred over HDPE to
-reduce the costs and weight of assembly.</p>
-<p><b>Process:</b> 2-piece
-injection blow molding</p>
-<p><b>Reasoning for process:</b> The part is a thin-walled
-component with no internal dimensions that are pertinent to <span>the
-assembly</span> or functionality. 2-piece injection blow molding was chosen for
-its relatively low-cost operation while following these dimensional
-requirements.</p>
-<p><b>Equipment Settings Reasoning:<br/>
-</b>in the preform stage, the rear barrel temperature of the bottle injection
-blow mold machine is set to 360F with a gradual increase up to 400F at the
-front barrel position. This allows for a gradual melting process and tighter
-control over the viscosity as the polypropylene pellets are fed into the blow
-nozzle. This is both energy efficient, and quality enhancing, as sudden
-increases in temperature make the PP polymer susceptible to thermal shock. The
-barrel feeding process ensures that the PP is hot enough to melt and flow
-properly when it reaches the final nozzle temperature of 500F.</p>
-<p>The blow pressure is set to 1000 psi for the actual
-injection process into the preform mold. This pressure is a nice medium for PP
-where it achieves good dimensional <span>tolerance, yet</span>
-doesnt have issues with sticking to the mold. It is industry standard for the
-holding pressure to be at about 80% of the injection pressure, so the hold
-pressure for our bottle was chosen to be 800 psi. It has been found experimentally
-that the optimal holding time for a PP bottle <span>preform</span>
-is around 40 seconds, so that was the value chosen in our case.</p>
-<p>Once the preform has been set, the preform is moved to the
-blow section, where compressed air at 120 psi fills the preform into the final
-mold shape. Cooling for 10 seconds allows for <span>finalizing of</span>
-the shape and properties.</p>
-<b><span><br clear="all"/>
-</span></b>
-<p><b></b></p>
-<p><b>Traveler:</b></p>
-<p align="center">
-  <Image src={Image3} alt="Bottle Traveler" style="max-width: 597px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<b><span><br clear="all"/>
-</span></b>
-<p><b></b></p>
-<p><span>Lid:</span></p>
-<p><b>Drawing:</b></p>
-<p align="center">
-  <Image src={Image4} alt="Lid Drawing 1" style="max-width: 380px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-  <Image src={Image5} alt="Lid Drawing 2" style="max-width: 378px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-  <Image src={Image6} alt="Lid Drawing 3" style="max-width: 375px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p align="center"></p>
-<p><b>Material:</b> HDPE</p>
-<p>Reasoning for Material: HDPE was chosen as it is cheap, durable
-against fatigue, and can easily form watertight seals. HDPE is FDA approved and
-chosen over PP due to its increased strength, allowing it to handle repeated
-impact and loadings from the cap. </p>
-<p><b>Process:</b> Screw Injection (Incorporates threads one
-portion of the mold that unscrews from the part)</p>
-<p align="center">
-  <Image src={Image7} alt="Lid Threaded Feature" style="max-width: 136px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p><b>Reasoning for process: </b>The external features for
-mounting the cap and lid as well as maintaining tighter dimensional tolerances
-to prevent spills necessitated some injection molding process. Due to the
-internal threading of the part, a turning operation would be required to remove
-the piece from the machine, at which screw injection was chosen for the
-process. </p>
-<p><b>Equipment Settings Reasoning:</b></p>
-<p><span>Feed</span> zone is set 392F and nozzle
-to 446F. The rationale is <span>similar to</span> <span>as</span> discussed earlier in the case of PP. The melt temperature
-for HDPE is typically around 420F for high molecular weight HDPE (The
-selection for our parts). This means that we need the <span>feed</span>
-to have pellets reasonably close to the melt temperature so the nozzle can melt
-the entirety of the polymer without risking thermal shock. The injection speed
-for the Lid is set <span>to</span> slow, as threaded features need
-to be more carefully injected to ensure proper filling of all the thread
-features in the mold. Hold for 5 seconds to ensure features are set and
-material has sufficiently hardened.</p>
-<b><span><br clear="all"/>
-</span></b>
-<p><b></b></p>
-<p><b>Traveler:</b></p>
-<p align="center">
-  <Image src={Image8} alt="Lid Traveler" style="max-width: 510px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<b><span><br clear="all"/>
-</span></b>
-<p><b></b></p>
-<h2><span>Cap:</span></h2>
-<p><b>Drawing:</b><b></b></p>
-<p align="center">
-  <Image src={Image9} alt="Cap Drawing 1" style="max-width: 374px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-  <Image src={Image10} alt="Cap Drawing 2" style="max-width: 369px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-  <Image src={Image11} alt="Cap Drawing 3" style="max-width: 370px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<b><span><br clear="all"/>
-</span></b>
-<p><b></b></p>
-<p><b>Material:</b> HDPE</p>
-<p>Reasoning for Material: HDPE was chosen as it is cheap, durable
-against fatigue, and can easily form watertight seals. HDPE is FDA approved and
-chosen over PP due to its increased strength, allowing it to handle repeated
-impact and loadings with the lid.</p>
-<p><b>Process:</b>
-Injection molding</p>
-<p><b>Reasoning for
-Process:</b> The part is relatively simple and requires tighter dimensional
-tolerances <span>in order to</span> prevent spillage. Injection
-molding was chosen to fulfill these requirements and provide a solid <span>fill</span> for the part.</p>
-<p><b>Equipment Settings Reasoning:</b></p>
-<p><span>Feed</span> zone is set 392F and nozzle
-to 446F. The rationale is <span>similar to</span> <span>as</span> discussed earlier in the case of PP. The melt temperature
-for HDPE is typically around 420F for high molecular weight HDPE (The
-selection for our parts). This means that we need the <span>feed</span>
-to have pellets reasonably close to the melt temperature so the nozzle can melt
-the entirety of the polymer without risking thermal shock. The injection speed
-for the Cap is set <span>to</span> fast, as non-threaded features
-do not need the same care as threaded features when molding. Hold for 5 seconds
-to ensure features are set and material has sufficiently hardened.</p>
-<b><span><br clear="all"/>
-</span></b>
-<p><b></b></p>
-<p><b>Traveler:</b></p>
-<p align="center">
-  <Image src={Image12} alt="Cap Traveler" style="max-width: 530px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<span><br clear="all"/>
-</span>
-<p><span></span></p>
-<h2><span>Hook:</span></h2>
-<p><b>Drawing:</b></p>
-<p align="center">
-  <Image src={Image13} alt="Hook Drawing 1" style="max-width: 545px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-  <Image src={Image14} alt="Hook Drawing 2" style="max-width: 547px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p align="center"></p>
-<p><b>Material:</b> HDPE</p>
-<p><b>Reasoning for
-Material:</b> HDPE was chosen as it is cheap and durable against fatigue. HDPE
-is FDA approved and chosen over PP due to its increased strength, allowing it
-to handle repeated impact and loadings.</p>
-<p><b>Process:</b>
-Injection molding</p>
-<p><b>Reasoning for Process:</b> The hook is simple but requires
-moderate strength and tolerancing for mounting with the bottle, at which
-injection molding was chosen.</p>
-<p><b>Equipment Settings Reasoning:</b></p>
-<p><span>Feed</span> zone is set 392F and nozzle
-to 446F. The rationale is <span>similar to</span> <span>as</span> discussed earlier in the case of PP. The melt temperature
-for HDPE is typically around 420F for high molecular weight HDPE (The
-selection for our parts). This means that we need the <span>feed</span>
-to have pellets reasonably close to the melt temperature so the nozzle can melt
-the entirety of the polymer without risking thermal shock. The injection speed
-for the Hook is set <span>to</span> fast, as non-threaded features
-do not need the same care as threaded features when molding. Hold for 5 seconds
-to ensure features are set and material has sufficiently hardened.</p>
-<span><br clear="all"/>
-</span>
-<p></p>
-<p></p>
-<p><b>Traveler:</b></p>
-<p align="center">
-  <Image src={Image15} alt="Hook Traveler" style="max-width: 544px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p align="center"><b></b></p>
-<p align="center"><b></b></p>
-<p align="center"><b></b></p>
-<p align="center"><b></b></p>
-<span><br clear="all"/>
-</span>
-<p><span></span></p>
-<h2><span>Shaker Ball:</span></h2>
-<p><b>Drawing:</b></p>
-<p align="center">
-  <Image src={Image16} alt="Shaker Ball Drawing" style="max-width: 615px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p><b>Material: </b>304
-Stainless</p>
-<p><b>Material Selection:</b>
-Corrosion resistance and FDA approved material for food packaging following
-post-processing/cleaning, a common material in kitchenware, and ductile
-material properties prevent fracture failure after extensive use cycles.</p>
-<p><b>Process:</b> CNC Wire
-Forming</p>
-<p><b>Process Selection:</b>
-To manufacture a complex shape at scale, CNC wire forming was chosen instead of
-manual forming, which would require a custom mandrel and human intervention.</p>
-<p><b>Equipment Settings Reasoning:</b></p>
-<p>Spooled 304 stainless wire of diam. 0.625 was chosen as it gives
-sufficient strength while allowing for easy forming. It also creates a ball
-shape that is sufficiently large for mixing drinks, but not heavy enough to
-break the bottle, or be an inconvenience to travel with. Tumble finishing is
-used to knock off any sharp edges to ensure no harm to the customer or the
-inside surface of the bottle.</p>
-<p><b>Traveler:</b></p>
-<p align="center">
-  <Image src={Image17} alt="Shaker Ball Traveler" style="max-width: 452px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p></p>
-<span><span><br clear="all"/>
-</span></span>
-<p><span><span></span></span></p>
-<p><span><span>Post Processing/Cleaning:</span></span><span> </span></p>
-<p>Sterilization by steam or boiling water will be used due to
-the low cost and no residue imposed in comparison to chlorine or expensive UV
-sterilization processes. The use of steam at sufficient temperatures and
-pressure is approved by the FDA <span>in order for</span> FDA
-approval of the product.</p>
-<p></p>
-<h3><b><span>Assembly:</span></b></h3>
-<p align="center">
-  <Image src={Image18} alt="Assembly 1" style="max-width: 513px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<h3><b><span></span></b></h3>
-<p align="center">
-  <Image src={Image19} alt="Assembly 2" style="max-width: 584px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-  <Image src={Image20} alt="Assembly 3" style="max-width: 555px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p></p>
-<h3><b><span>Total Assembly Cost:</span></b></h3>
-<p><span>Estimated
-to be ~$0.40-0.60</span></p>
-<h3><b><span>List of Parts &amp;
-Material:</span></b><b><span></span></b></h3>
-<table border="1" cellpadding="0" cellspacing="0" width="632">
-<tr>
-<td valign="top" width="125">
-<p><span>Part</span></p>
-</td>
-<td valign="top" width="125">
-<p><span>Material</span></p>
-</td>
-<td valign="top" width="162">
-<p><span>Max Production Rate</span></p>
-</td>
-<td valign="top" width="220">
-<p><span>Manufacturing Process</span></p>
-<p></p>
-</td>
-</tr>
-<tr>
-<td valign="top" width="125">
-<p><span>Bottle</span></p>
-</td>
-<td valign="top" width="125">
-<p><span>Polypropylene</span></p>
-</td>
-<td rowspan="5" width="162">
-<p align="center"><span>&gt;10,000</span></p>
-</td>
-<td valign="top" width="220">
-<p><span>2-piece injection blow molding</span></p>
-<p></p>
-</td>
-</tr>
-<tr>
-<td valign="top" width="125">
-<p><span>Lid</span></p>
-</td>
-<td valign="top" width="125">
-<p><span>High-density Polypropylene</span></p>
-</td>
-<td valign="top" width="220">
-<p><span>Screw Injection Molding</span></p>
-<p></p>
-</td>
-</tr>
-<tr>
-<td valign="top" width="125">
-<p><span>Cap</span></p>
-</td>
-<td valign="top" width="125">
-<p><span>High-density Polypropylene</span></p>
-</td>
-<td valign="top" width="220">
-<p><span>Injection Molding</span></p>
-<p></p>
-</td>
-</tr>
-<tr>
-<td valign="top" width="125">
-<p><span>Hook</span></p>
-</td>
-<td valign="top" width="125">
-<p><span>High-density Polypropylene</span></p>
-</td>
-<td valign="top" width="220">
-<p><span>Injection Molding</span></p>
-<p></p>
-</td>
-</tr>
-<tr>
-<td valign="top" width="125">
-<p><span>Shaker Ball</span></p>
-</td>
-<td valign="top" width="125">
-<p><span>AISI 304 Stainless</span></p>
-</td>
-<td valign="top" width="220">
-<p><span>CNC Wire Forming/Bender</span></p>
-<p></p>
-</td>
-</tr>
-</table>
-<p></p>
-<p>The production rate will be adjusted to match what the
-expected number of bottles sold is to be, as the production rate for the
-projected processes we will choose <span>likely exceeds</span> the number
-of bottles <span>to be sold</span>.</p>
-<p></p>
-<p align="center">
-  <Image src={Image21} alt="Cost Sheet/Document 42" style="max-width: 570px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<p align="center">
-  <Image src={Image22} alt="Cost Sheet/Document 44" style="max-width: 580px; width: 100%; margin: 2rem 0; border-radius: 12px;"/>
-</p>
-<span><br clear="all"/>
-</span>
-<h1><span>References</span></h1>
-<p>
-  <a href="https://www.youtube.com/watch?v=vP3BRNCGxRU">
-    Automated Robotic Bottling Assembly Line - YouTube
-  </a>
-  <br/>
-  <a href="https://www.surekap.com/capping-machines/sk1000-fully-automatic-snap-capping-machine">
-    SK1000 Fully Automatic Snap Capping | Made in USA | SureKap - Automatic Bottle Capping Machines
-  </a>
-</p>
-<p>
-  <a href="https://www.teamrapidtooling.com/injection-molding-threads-t-48.html">
-    https://www.teamrapidtooling.com/injection-molding-threads-t-48.html
-  </a>
-</p>
-<p>
-  <a href="https://kochind.scene7.com/is/content/kochind/PP_INJECTION_BLOW_MOLDING_GUIDE">
-    Microsoft Word - PP_INJECTION_BLOW_MOLDING_GUIDE
-  </a>
-</p>
-<p>
-  <a href="https://onlinelibrary.wiley.com/doi/10.1155/2018/2635084">
-    Optimization of Process Parameters for Vertical‐Faced Polypropylene Bottle Injection Molding - Wang - 2018 - Advances in Materials Science and Engineering - Wiley Online Library
-  </a>
-</p>
-</div>
+# Bottle Service
+
+
+**Members**
+
+- Om Patel
+- Matthew Slovak
+- Christopher Brown
+- Ryan Hailey
+- Juan Orduna
+- Brian Shipman
+- Nicholas Proni
+
+## Bottle
+
+**Drawing**
+
+<Image
+  src={Image1}
+  alt="Bottle Drawing 1"
+  style="max-width:525px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+<Image
+  src={Image2}
+  alt="Bottle Drawing 2"
+  style="max-width:520px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+**Material:** PP
+
+Reasoning for Material: PP is a cheap and durable material that can withstand repeated impact from the shaker ball and allows viewing of liquid level. PP is FDA approved for holding liquids and preferred over HDPE to reduce the costs and weight of assembly.
+
+**Process:** 2-piece injection blow molding
+
+Reasoning for process: The part is a thin-walled component with no internal dimensions that are pertinent to the assembly or functionality. 2-piece injection blow molding was chosen for its relatively low-cost operation while following these dimensional requirements.
+
+**Equipment Settings Reasoning:**
+
+in the preform stage, the rear barrel temperature of the bottle injection blow mold machine is set to 360F with a gradual increase up to 400F at the front barrel position. This allows for a gradual melting process and tighter control over the viscosity as the polypropylene pellets are fed into the blow nozzle. This is both energy efficient, and quality enhancing, as sudden increases in temperature make the PP polymer susceptible to thermal shock. The barrel feeding process ensures that the PP is hot enough to melt and flow properly when it reaches the final nozzle temperature of 500F.
+
+The blow pressure is set to 1000 psi for the actual injection process into the preform mold. This pressure is a nice medium for PP where it achieves good dimensional tolerance, yet doesnt have issues with sticking to the mold. It is industry standard for the holding pressure to be at about 80% of the injection pressure, so the hold pressure for our bottle was chosen to be 800 psi. It has been found experimentally that the optimal holding time for a PP bottle preform is around 40 seconds, so that was the value chosen in our case.
+
+Once the preform has been set, the preform is moved to the blow section, where compressed air at 120 psi fills the preform into the final mold shape. Cooling for 10 seconds allows for finalizing of the shape and properties.
+
+## Traveler
+
+<Image
+  src={Image3}
+  alt="Bottle Traveler"
+  style="max-width:597px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+## Lid
+
+**Drawing**
+
+<Image
+  src={Image4}
+  alt="Lid Drawing 1"
+  style="max-width:380px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+<Image
+  src={Image5}
+  alt="Lid Drawing 2"
+  style="max-width:378px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+<Image
+  src={Image6}
+  alt="Lid Drawing 3"
+  style="max-width:375px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+**Material:** HDPE
+
+Reasoning for Material: HDPE was chosen as it is cheap, durable against fatigue, and can easily form watertight seals. HDPE is FDA approved and chosen over PP due to its increased strength, allowing it to handle repeated impact and loadings from the cap.
+
+**Process:** Screw Injection (Incorporates threads one portion of the mold that unscrews from the part)
+
+<Image
+  src={Image7}
+  alt="Lid Threaded Feature"
+  style="max-width:136px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+Reasoning for process: The external features for mounting the cap and lid as well as maintaining tighter dimensional tolerances to prevent spills necessitated some injection molding process. Due to the internal threading of the part, a turning operation would be required to remove the piece from the machine, at which screw injection was chosen for the process.
+
+**Equipment Settings Reasoning:**
+
+Feed zone is set 392F and nozzle to 446F. The rationale is similar to as discussed earlier in the case of PP. The melt temperature for HDPE is typically around 420F for high molecular weight HDPE (The selection for our parts). This means that we need the feed to have pellets reasonably close to the melt temperature so the nozzle can melt the entirety of the polymer without risking thermal shock. The injection speed for the Lid is set to slow, as threaded features need to be more carefully injected to ensure proper filling of all the thread features in the mold. Hold for 5 seconds to ensure features are set and material has sufficiently hardened.
+
+## Traveler
+
+<Image
+  src={Image8}
+  alt="Lid Traveler"
+  style="max-width:510px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+## Cap
+
+**Drawing:**
+
+<Image
+  src={Image9}
+  alt="Cap Drawing 1"
+  style="max-width:374px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+<Image
+  src={Image10}
+  alt="Cap Drawing 2"
+  style="max-width:369px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+<Image
+  src={Image11}
+  alt="Cap Drawing 3"
+  style="max-width:370px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+**Material:** HDPE
+
+Reasoning for Material: HDPE was chosen as it is cheap, durable against fatigue, and can easily form watertight seals. HDPE is FDA approved and chosen over PP due to its increased strength, allowing it to handle repeated impact and loadings with the lid.
+
+**Process:** Injection molding
+
+Reasoning for Process: The part is relatively simple and requires tighter dimensional tolerances in order to prevent spillage. Injection molding was chosen to fulfill these requirements and provide a solid fill for the part.
+
+**Equipment Settings Reasoning:**
+
+Feed zone is set 392F and nozzle to 446F. The rationale is similar to as discussed earlier in the case of PP. The melt temperature for HDPE is typically around 420F for high molecular weight HDPE (The selection for our parts). This means that we need the feed to have pellets reasonably close to the melt temperature so the nozzle can melt the entirety of the polymer without risking thermal shock. The injection speed for the Cap is set to fast, as non-threaded features do not need the same care as threaded features when molding. Hold for 5 seconds to ensure features are set and material has sufficiently hardened.
+
+## Traveler
+
+<Image
+  src={Image12}
+  alt="Cap Traveler"
+  style="max-width:530px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+## Hook
+
+**Drawing:**
+
+<Image
+  src={Image13}
+  alt="Hook Drawing 1"
+  style="max-width:545px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+<Image
+  src={Image14}
+  alt="Hook Drawing 2"
+  style="max-width:547px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+**Material:** HDPE
+
+Reasoning for Material: HDPE was chosen as it is cheap and durable against fatigue. HDPE is FDA approved and chosen over PP due to its increased strength, allowing it to handle repeated impact and loadings.
+
+**Process:** Injection molding
+
+Reasoning for Process: The hook is simple but requires moderate strength and tolerancing for mounting with the bottle, at which injection molding was chosen.
+
+**Equipment Settings Reasoning:**
+
+Feed zone is set 392F and nozzle to 446F. The rationale is similar to as discussed earlier in the case of PP. The melt temperature for HDPE is typically around 420F for high molecular weight HDPE (The selection for our parts). This means that we need the feed to have pellets reasonably close to the melt temperature so the nozzle can melt the entirety of the polymer without risking thermal shock. The injection speed for the Hook is set to fast, as non-threaded features do not need the same care as threaded features when molding. Hold for 5 seconds to ensure features are set and material has sufficiently hardened.
+
+## Traveler
+
+<Image
+  src={Image15}
+  alt="Hook Traveler"
+  style="max-width:544px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+## Shaker Ball
+
+**Drawing:**
+
+<Image
+  src={Image16}
+  alt="Shaker Ball Drawing"
+  style="max-width:615px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+**Material:** 304 Stainless
+
+Material Selection: Corrosion resistance and FDA approved material for food packaging following post-processing/cleaning, a common material in kitchenware, and ductile material properties prevent fracture failure after extensive use cycles.
+
+**Process:** CNC Wire Forming
+
+Process Selection: To manufacture a complex shape at scale, CNC wire forming was chosen instead of manual forming, which would require a custom mandrel and human intervention.
+
+**Equipment Settings Reasoning:**
+
+Spooled 304 stainless wire of diam. 0.625 was chosen as it gives sufficient strength while allowing for easy forming. It also creates a ball shape that is sufficiently large for mixing drinks, but not heavy enough to break the bottle, or be an inconvenience to travel with. Tumble finishing is used to knock off any sharp edges to ensure no harm to the customer or the inside surface of the bottle.
+
+**Traveler:**
+
+<Image
+  src={Image17}
+  alt="Shaker Ball Traveler"
+  style="max-width:452px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+**Post Processing/Cleaning:**
+
+Sterilization by steam or boiling water will be used due to the low cost and no residue imposed in comparison to chlorine or expensive UV sterilization processes. The use of steam at sufficient temperatures and pressure is approved by the FDA in order for FDA approval of the product.
+
+## Assembly
+
+<Image
+  src={Image18}
+  alt="Assembly 1"
+  style="max-width:513px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+<Image
+  src={Image19}
+  alt="Assembly 2"
+  style="max-width:584px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+<Image
+  src={Image20}
+  alt="Assembly 3"
+  style="max-width:555px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+**Total Assembly Cost:**
+
+Estimated to be ~$0.40-0.60
+
+**List of Parts & Material:**
+
+| Part         | Material                  | Max Production Rate | Manufacturing Process                     |
+|--------------|---------------------------|---------------------|-------------------------------------------|
+| Bottle       | Polypropylene              | >10,000             | 2-piece injection blow molding            |
+| Lid          | High-density Polypropylene |                     | Screw Injection Molding                   |
+| Cap          | High-density Polypropylene |                     | Injection Molding                         |
+| Hook         | High-density Polypropylene |                     | Injection Molding                         |
+| Shaker Ball  | AISI 304 Stainless        |                     | CNC Wire Forming/Bender                  |
+
+The production rate will be adjusted to match what the expected number of bottles sold is to be, as the production rate for the projected processes we will choose likely exceeds the number of bottles to be sold.
+
+<Image
+  src={Image21}
+  alt="Cost Sheet/Document 42"
+  style="max-width:570px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+<Image
+  src={Image22}
+  alt="Cost Sheet/Document 44"
+  style="max-width:580px; width:100%; margin:2rem 0; border-radius:12px;"
+/>
+
+## References
+
+- [Automated Robotic Bottling Assembly Line – YouTube](https://www.youtube.com/watch?v=vP3BRNCGxRU)
+- [SK1000 Fully Automatic Snap Capping | SureKap](https://www.surekap.com/capping-machines/sk1000-fully-automatic-snap-capping-machine)
+- https://www.teamrapidtooling.com/injection-molding-threads-t-48.html
+- Microsoft Word – PP_INJECTION_BLOW_MOLDING_GUIDE
+- Optimization of Process Parameters… (Wiley Online Library)
