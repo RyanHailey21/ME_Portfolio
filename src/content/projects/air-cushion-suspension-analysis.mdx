@@ -1,0 +1,133 @@
+---
+title: 'Air Cushion Suspension System Analysis'
+description: 'Dynamic modeling and stability analysis of pneumatic air cushion suspension using state-space methods and control theory'
+image: '../../assets/images/projects/aircushionsuspensionanalysis/ResponsePlot.jpeg'
+tags: ['Code', 'Research', 'Matlab']
+technologies: ['MATLAB', 'Control Systems', 'State-Space Analysis', 'Laplace Transform', 'System Identification']
+githubUrl: 'https://github.com/username/air-cushion-suspension'
+---
+
+import {Image} from 'astro:assets';
+import SystemDiagram from '../../assets/images/projects/aircushionsuspensionanalysis/SystemDiagram.jpeg';
+import BlockDiagram from '../../assets/images/projects/aircushionsuspensionanalysis/BlockDiagram.jpeg';
+import ResponsePlot from '../../assets/images/projects/aircushionsuspensionanalysis/ResponsePlot.jpeg';
+
+## Overview
+
+This project develops a comprehensive mathematical model for circular air cushion suspension systems, focusing on dynamic behavior analysis and stability assessment. The study linearizes the pneumatic system around equilibrium conditions and applies modern control theory to evaluate system performance for vibration isolation applications.
+
+<Image src={SystemDiagram} alt="Air cushion suspension system with mass, compressor, and flow dynamics" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Approach
+
+- **Linearization Analysis:** Developed perturbation equations around equilibrium for mass flow and pressure dynamics
+- **State-Space Formulation:** Constructed 3rd-order system with displacement, velocity, and pressure states
+- **Stability Assessment:** Computed characteristic polynomial and eigenvalue analysis
+- **Transfer Function Derivation:** Used symbolic mathematics for Laplace domain representation
+- **Numerical Validation:** MATLAB simulation comparing multiple solution approaches
+
+## System Mathematical Model
+
+The air cushion system is governed by four linearized equations representing force balance, compressor flow, resistance flow, and pressure capacitance:
+
+```matlab
+% Linearized system equations around equilibrium
+% (1) Sum of Forces: 4500*Δz̈ - 6.5*ΔP = 0
+% (2) Flow Variation (compressor): ΔQs = -0.004*ΔP  
+% (3) Resistance for flow variation: ΔQe = 0.004*ΔP + 640*Δz
+% (4) Capacitance: ΔQs - ΔQe - 6.5*Δż = 1.5×10⁻⁶*ΔṖ
+
+% System parameters
+m = 4500;      % Mass (kg)
+kP = 6.5;      % Pressure coefficient
+Rc = 0.004;    % Compressor resistance
+Re = 0.004;    % Exit resistance  
+Kz = 640;      % Flow-displacement coupling
+Cp = 1.5e-6;   % Pressure capacitance
+```
+
+## State-Space Representation
+
+<Image src={BlockDiagram} alt="Block diagram showing feedback control structure of air cushion system" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+The system was formulated with state variables representing the physical quantities:
+- x₁ = Δz (displacement perturbation)
+- x₂ = Δż (velocity perturbation)  
+- x₃ = ΔP (pressure perturbation)
+
+```matlab
+% State-space matrices
+A = [0,           1,              0;
+     0,           0,              6.5/4500;
+     -640/Cp,     -6.5/Cp,        -0.008/Cp];
+
+B = [0; 0; 0];          % No external input for IC response
+C = [1/9.8, 0, 0];      % Output: Δz/g (normalized displacement)
+D = 0;
+
+% Create state-space system
+sys_ss = ss(A, B, C, D);
+```
+
+## Stability Analysis
+
+The characteristic polynomial analysis revealed system stability characteristics:
+
+```matlab
+% Characteristic polynomial: s³ + 5333s² + 6264s + 6.16×10⁵ = 0
+% Eigenvalues computed:
+lambda1 = -5333 + 0j;      % Fast pole
+lambda2 = -0.6 + 10.7j;    % Complex conjugate pair
+lambda3 = -0.6 - 10.7j;
+
+% System parameters
+wn = 10.72;     % Natural frequency (rad/s)
+zeta = 0.056;   % Damping ratio (lightly damped)
+tau1 = 1.875e-4; % Fast time constant (s)
+tau23 = 1.667;   % Slow time constant (s)
+```
+
+**Key Finding:** The system is **absolutely stable** with all poles in the left half-plane, indicating effective vibration isolation with light damping characteristics.
+
+## Dynamic Response Analysis
+
+<Image src={ResponsePlot} alt="Comparison of initial condition response and impulse response showing oscillatory decay" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+MATLAB simulation validated the theoretical model through multiple approaches:
+
+```matlab
+% Initial condition response
+X0 = [0.005; 0; 0];  % 5mm initial displacement
+tFinal = 5*1.667;    % 5 time constants
+[yIC, tIC] = initial(sys_ss, X0, tFinal);
+
+% Transfer function validation
+% Derived symbolic transfer function and compared responses
+syms s Z P Qs Qe real;
+% [Symbolic solution process...]
+sys_tf_scaled = sys_tf / 9.8;
+[yImpulse, tImpulse] = impulse(sys_tf_scaled, tIC);
+
+% Plot comparison
+figure;
+plot(tIC, yIC, 'LineWidth', 2, 'DisplayName', 'Initial Condition Response');
+hold on;
+plot(tImpulse, yImpulse, '--', 'LineWidth', 2, 'DisplayName', 'Impulse Response');
+```
+
+## Results
+
+The comprehensive analysis provided crucial insights for suspension system design:
+
+**System Characteristics:**
+- **Stability:** Absolutely stable operation with fast pressure dynamics and slower mechanical response
+- **Damping:** Light damping (ζ = 0.056) provides good vibration isolation without excessive settling time
+- **Natural Frequency:** 10.72 rad/s indicates appropriate bandwidth for typical disturbance isolation
+
+**Engineering Implications:**
+- Suitable for precision vibration isolation applications
+- Fast pressure response enables effective disturbance rejection
+- Low damping characteristics ideal for smooth ride quality
+- Mathematical framework enables systematic design optimization
+
+This analysis demonstrates advanced control systems methodology applicable to automotive suspension design, precision instrumentation isolation, and pneumatic actuation systems.
