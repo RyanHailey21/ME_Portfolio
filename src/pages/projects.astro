@@ -5,36 +5,43 @@ import { getCollection } from 'astro:content';
 
 const allTags = ['CAD', 'Code', 'FEA', 'Matlab', 'Python', 'C', 'C++', 'JavaScript', 'Miscellaneous'];
 
-// Define Project interface
 interface Project {
   title: string;
   description: string;
-  image: string;
+  image: ImageMetadata;
   tags: string[];
   slug: string;
 }
 
-// Fetch all MDX files from the projects directory
 const projectPosts = await getCollection('projects');
 
 const projects: Project[] = projectPosts.map((post: any) => ({
   title: post.data.title,
-  description: post.data.description, // This is the short description from MDX frontmatter
+  description: post.data.description,
   image: post.data.image,
   tags: post.data.tags,
-  slug: post.slug, // Ensure slug is always a string
+  slug: post.slug,
 }));
 ---
 
-<Layout title="Projects | Portfolio">
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold mb-8 bg-gradient-portfolio text-transparent bg-clip-text">Projects</h1>
-    
-    <div class="mb-8">
+<Layout title="Projects | Ryan Hailey">
+  <main class="max-w-6xl mx-auto px-6 py-16">
+
+    <!-- Header -->
+    <div class="mb-12">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="block w-8 h-px bg-brass flex-shrink-0"></span>
+        <span class="font-mono text-xs text-brass tracking-[0.2em] uppercase">Work</span>
+      </div>
+      <h1 class="font-display text-5xl md:text-6xl font-light text-chalk">Projects</h1>
+    </div>
+
+    <!-- Tag filters -->
+    <div class="mb-10">
       <div class="flex flex-wrap gap-2" id="tagFilters">
         {allTags.map((tag) => (
           <button
-            class="px-4 py-2 rounded-full border-2 border-portfolio-blue text-gray-300 hover:bg-gradient-portfolio hover:text-white transition-colors"
+            class="px-3 py-1.5 font-mono text-xs tracking-wider border border-ink-line text-chalk-muted rounded hover:border-chalk-muted hover:text-chalk transition-colors duration-150"
             data-tag={tag}
           >
             {tag}
@@ -43,35 +50,45 @@ const projects: Project[] = projectPosts.map((post: any) => ({
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
+    <!-- Projects grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5" id="projectsGrid">
       {projects.map((project: Project) => (
-        <ProjectCard 
-        title={project.title}
-        description={project.description}
-        image={project.image}
-        tags={project.tags}
-        slug={project.slug}
+        <ProjectCard
+          title={project.title}
+          description={project.description}
+          image={project.image}
+          tags={project.tags}
+          slug={project.slug}
         />
       ))}
     </div>
+
+    <!-- Empty state (hidden by default) -->
+    <div id="emptyState" class="hidden py-20 text-center">
+      <p class="font-mono text-sm text-chalk-muted">No projects match the selected filters.</p>
+    </div>
+
   </main>
 </Layout>
 
 <script>
-  const tagButtons = document.querySelectorAll('[data-tag]');
-  const projectCards = document.querySelectorAll('article');
-  const activeFilters = new Set();
+  const tagButtons = document.querySelectorAll<HTMLButtonElement>('[data-tag]');
+  const projectCards = document.querySelectorAll<HTMLElement>('article');
+  const emptyState = document.getElementById('emptyState');
+  const activeFilters = new Set<string>();
 
   tagButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const tag = button.getAttribute('data-tag');
-      button.classList.toggle('bg-gradient-portfolio');
-      button.classList.toggle('text-white');
+      const tag = button.getAttribute('data-tag')!;
 
       if (activeFilters.has(tag)) {
         activeFilters.delete(tag);
+        button.classList.remove('border-brass', 'text-brass');
+        button.classList.add('border-ink-line', 'text-chalk-muted');
       } else {
         activeFilters.add(tag);
+        button.classList.add('border-brass', 'text-brass');
+        button.classList.remove('border-ink-line', 'text-chalk-muted');
       }
 
       filterProjects();
@@ -79,12 +96,17 @@ const projects: Project[] = projectPosts.map((post: any) => ({
   });
 
   function filterProjects() {
+    let visible = 0;
     projectCards.forEach(card => {
-      const cardTags = Array.from(card.querySelectorAll('span')).map(span => span.textContent);
+      const tagSpans = Array.from(card.querySelectorAll('span[class*="font-mono"]'));
+      const cardTags = tagSpans.map(span => span.textContent?.trim() ?? '');
       const shouldShow = activeFilters.size === 0 || cardTags.some(tag => activeFilters.has(tag));
-      if (card.parentElement) {
-        card.parentElement.style.display = shouldShow ? 'block' : 'none';
+      const wrapper = card.parentElement;
+      if (wrapper) {
+        wrapper.style.display = shouldShow ? 'block' : 'none';
+        if (shouldShow) visible++;
       }
     });
+    if (emptyState) emptyState.style.display = visible === 0 ? 'block' : 'none';
   }
 </script>

@@ -1,241 +1,140 @@
 ---
 ---
 
-<section class="py-24 relative" id="about">
-  <!-- Background elements -->
-  <div class="absolute top-0 right-0 w-64 h-64 bg-portfolio-blue opacity-5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 left-0 w-80 h-80 bg-portfolio-teal opacity-5 rounded-full blur-3xl"></div>
-  <div class="absolute top-0 right-0 w-64 h-64 bg-portfolio-blue opacity-5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-0 left-0 w-80 h-80 bg-portfolio-teal opacity-5 rounded-full blur-3xl"></div>
-  
-  <div class="max-w-7xl w-full mx-auto px-4 relative z-10">
-    <div class="flex flex-col items-center mb-16" data-aos="fade-up">
-      <h2 class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-portfolio text-transparent bg-clip-text animate-gradient-x">About Me</h2>
-      <div class="w-24 h-1 bg-gradient-portfolio rounded-full mb-6"></div>
+<section class="py-28" id="about">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- Section header -->
+    <div class="mb-16">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="block w-8 h-px bg-brass flex-shrink-0"></span>
+        <span class="font-mono text-xs text-brass tracking-[0.2em] uppercase">Background</span>
+      </div>
+      <h2 class="font-display text-5xl md:text-6xl font-light text-chalk">About Me</h2>
     </div>
-    
-    <!-- Two-column bio and skills section -->
-    <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-      <!-- Left column with bio -->
-      <div class="lg:col-span-3 space-y-6" data-aos="fade-right">
-        <p class="text-gray-300 text-lg leading-relaxed">
-          I spent most of my childhood and early college career obsessed with golf. I was fortunate enough to land a starting role on the Mdiwestern State golf team after I left my highschool career behind. Midwestern State was the place where I would make a critical decision though. 
-          <p>
-          After dedicating all that time towards golf (which I still love), I began to get the feeling that it didn't provide any inherit value to the world. (I know cringey existential stuff but it's what was going through myy head). I realized that I could really enjoy golf on my own time, while pursuing something that would produce something of real value. That is when I decided to go all in for mechanical engineering. I had a biref forier into exercise science for a year, before jumping head first into the thermodynamics and physics.
-          </p>        
+
+    <!-- Bio + Skills -->
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-16 mb-20">
+
+      <!-- Bio -->
+      <div class="space-y-6">
+        <p class="text-chalk-secondary text-base leading-relaxed">
+          I spent most of my childhood and early college career obsessed with golf. I was fortunate enough
+          to land a starting role on the Midwestern State golf team after I left my high school career behind.
+          Midwestern State was the place where I would make a critical decision.
         </p>
-        <p class="text-gray-300 text-lg leading-relaxed">
-          Beyond academics, I found a real passion for lifting wieghts and the science of what makes muscles grow. That led me down a path of studying longevity research papers and gaining a better understanding of how our biology works. I think this is greatly important as knowledge worker. I believe we can meanignfully influence our cognitive ability by first mastering our pysical body. but yea besides that I like hiking, fishing, and coding.
+        <p class="text-chalk-secondary text-base leading-relaxed">
+          After dedicating all that time towards golf (which I still love), I began to get the feeling that it
+          didn't provide any inherent value to the world. I realized that I could enjoy golf on my own time
+          while pursuing something that would produce real value. That is when I decided to go all in for
+          mechanical engineering — jumping head first into thermodynamics and physics.
         </p>
-        
-        <!-- Quote/highlight box -->
-        <div class="border border-portfolio-blue/30 border-l-4 rounded-lg p-6 bg-dark-card/60 mt-8 transform hover:scale-[1.02] transition-all duration-300">
-          <p class="text-gray-200 italic relative">
-            <span class="text-4xl text-portfolio-blue opacity-30 absolute -top-4 -left-2">"</span>
-            The happy man is the one who has a healthy body, a wealthy soul and a well-educated nature.
-            <br> - Thales
-            <span class="text-4xl text-portfolio-blue opacity-30 absolute -bottom-8 -right-2">"</span>
+        <p class="text-chalk-secondary text-base leading-relaxed">
+          Beyond academics, I found a real passion for lifting weights and the science of what makes muscles
+          grow. That led me down a path of studying longevity research and gaining a better understanding of
+          how our biology works. Besides that, I enjoy hiking, fishing, and coding.
+        </p>
+
+        <!-- Quote -->
+        <blockquote class="mt-10 pl-5 border-l-2 border-brass">
+          <p class="font-display text-xl font-light italic text-chalk leading-relaxed">
+            "The happy man is the one who has a healthy body, a wealthy soul and a well-educated nature."
           </p>
+          <footer class="mt-3 font-mono text-xs text-chalk-muted tracking-wider">— THALES</footer>
+        </blockquote>
+      </div>
+
+      <!-- Skills -->
+      <div>
+        <div class="mb-5">
+          <span class="font-mono text-xs text-chalk-muted tracking-[0.15em] uppercase">Technical Skills</span>
+          <div class="mt-2 w-full h-px bg-ink-line"></div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          {[
+            'CAD Design', 'SolidWorks', 'FEA / ANSYS',
+            'MATLAB', 'Python', 'C / C++',
+            'Thermal Analysis', 'System Identification',
+            'Control Systems', 'Robotics', 'Data Acquisition',
+            'Technical Writing',
+          ].map((skill) => (
+            <span class="px-3 py-1.5 text-xs font-mono text-chalk-secondary border border-ink-line rounded bg-ink-card hover:border-chalk-muted hover:text-chalk transition-colors duration-150">
+              {skill}
+            </span>
+          ))}
+        </div>
+
+        <div class="mt-10">
+          <div class="mb-5">
+            <span class="font-mono text-xs text-chalk-muted tracking-[0.15em] uppercase">Interests</span>
+            <div class="mt-2 w-full h-px bg-ink-line"></div>
+          </div>
+          <ul class="space-y-3">
+            {[
+              ['Mechanical Design', 'Creating systems that move and transfer energy'],
+              ['Bodybuilding & Longevity', 'Physical performance and health science'],
+              ['Software Development', 'Simulation, control, and automation tools'],
+              ['Engineering Analysis', 'Thermal, structural, and dynamic modeling'],
+              ['Outdoors', 'Golf, hiking, and fishing'],
+            ].map(([title, desc]) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-[5px] block w-1.5 h-1.5 rounded-full bg-brass flex-shrink-0"></span>
+                <span>
+                  <span class="text-sm text-chalk font-medium">{title}</span>
+                  <span class="text-chalk-muted text-sm"> — {desc}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-      
-      <!-- Right column with skills -->
-      <div class="lg:col-span-2 space-y-8" data-aos="fade-left">
-        <!-- Technical Skills Card -->
-        <div class="rounded-xl overflow-hidden border border-portfolio-blue/20 bg-gradient-to-br from-dark-card to-dark-card/70 backdrop-blur-sm hover:shadow-lg hover:shadow-portfolio-blue/10 transition-all duration-300">
-          <div class="bg-dark-lighter/80 p-5 border-b border-portfolio-blue/20">
-            <h3 class="text-xl font-semibold flex items-center gap-2 text-portfolio-blue">
-              <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Technical Skills
-            </h3>
+    </div>
+
+    <!-- Education -->
+    <div>
+      <div class="mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="block w-8 h-px bg-brass flex-shrink-0"></span>
+          <span class="font-mono text-xs text-brass tracking-[0.2em] uppercase">Education</span>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <!-- UTA -->
+        <div class="group p-6 border border-ink-line rounded bg-ink-card hover:border-ink-subtle transition-colors duration-200">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+            <div>
+              <h3 class="font-display text-xl font-medium text-chalk">University of Texas at Arlington</h3>
+              <p class="text-chalk-secondary text-sm mt-0.5">Bachelor of Science in Mechanical Engineering</p>
+            </div>
+            <span class="font-mono text-xs text-chalk-muted whitespace-nowrap border border-ink-line px-3 py-1.5 rounded self-start">
+              Fall 2022 – Present
+            </span>
           </div>
-          <div class="p-5 space-y-6">
-            <!-- Skill bars with animations -->
-            <div class="space-y-1" data-aos="fade-right" data-aos-delay="100">
-              <div class="flex justify-between text-sm mb-1">
-                <span class="text-gray-300 font-medium">CAD Design</span>
-                <span class="text-portfolio-blue font-semibold">90%</span>
-              </div>
-              <div class="h-2 w-full bg-dark-lighter rounded-full overflow-hidden p-[1px]">
-                <div class="bg-gradient-portfolio h-full rounded-full origin-left transform transition-all duration-1000 animate-pulse" style="width: 90%"></div>
-              </div>
+          <div class="flex items-center gap-2 mt-3">
+            <span class="block w-1.5 h-1.5 rounded-full bg-brass"></span>
+            <span class="font-mono text-xs text-chalk-muted tracking-wider uppercase">In Progress</span>
+          </div>
+        </div>
+
+        <!-- MSU -->
+        <div class="group p-6 border border-ink-line rounded bg-ink-card hover:border-ink-subtle transition-colors duration-200">
+          <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 mb-2">
+            <div>
+              <h3 class="font-display text-xl font-medium text-chalk">Midwestern State University</h3>
+              <p class="text-chalk-secondary text-sm mt-0.5">Bachelor of Science in Mechanical Engineering · GPA 4.0 · Division II Golf</p>
             </div>
-            
-            <div class="space-y-1" data-aos="fade-right" data-aos-delay="200">
-              <div class="flex justify-between text-sm mb-1">
-                <span class="text-gray-300 font-medium">FEA Analysis</span>
-                <span class="text-portfolio-blue font-semibold">85%</span>
-              </div>
-              <div class="h-2 w-full bg-dark-lighter rounded-full overflow-hidden p-[1px]">
-                <div class="bg-gradient-portfolio h-full rounded-full origin-left transform transition-all duration-1000 animate-pulse" style="width: 85%"></div>
-              </div>
-            </div>
-            
-            <div class="space-y-1" data-aos="fade-right" data-aos-delay="300">
-              <div class="flex justify-between text-sm mb-1">
-                <span class="text-gray-300 font-medium">MATLAB Programming</span>
-                <span class="text-portfolio-blue font-semibold">80%</span>
-              </div>
-              <div class="h-2 w-full bg-dark-lighter rounded-full overflow-hidden p-[1px]">
-                <div class="bg-gradient-portfolio h-full rounded-full origin-left transform transition-all duration-1000 animate-pulse" style="width: 80%"></div>
-              </div>
-            </div>
-            
-            <div class="space-y-1" data-aos="fade-right" data-aos-delay="400">
-              <div class="flex justify-between text-sm mb-1">
-                <span class="text-gray-300 font-medium">Python Development</span>
-                <span class="text-portfolio-blue font-semibold">75%</span>
-              </div>
-              <div class="h-2 w-full bg-dark-lighter rounded-full overflow-hidden p-[1px]">
-                <div class="bg-gradient-portfolio h-full rounded-full origin-left transform transition-all duration-1000 animate-pulse" style="width: 75%"></div>
-              </div>
-            </div>
-            
-            <div class="space-y-1" data-aos="fade-right" data-aos-delay="500">
-              <div class="flex justify-between text-sm mb-1">
-                <span class="text-gray-300 font-medium">C/C++ Programming</span>
-                <span class="text-portfolio-blue font-semibold">70%</span>
-              </div>
-              <div class="h-2 w-full bg-dark-lighter rounded-full overflow-hidden p-[1px]">
-                <div class="bg-gradient-portfolio h-full rounded-full origin-left transform transition-all duration-1000 animate-pulse" style="width: 70%"></div>
-              </div>
-            </div>
+            <span class="font-mono text-xs text-chalk-muted whitespace-nowrap border border-ink-line px-3 py-1.5 rounded self-start">
+              Fall 2021 – Spring 2022
+            </span>
+          </div>
+          <div class="flex items-center gap-2 mt-3">
+            <span class="block w-1.5 h-1.5 rounded-full bg-chalk-muted"></span>
+            <span class="font-mono text-xs text-chalk-muted tracking-wider uppercase">Transferred</span>
           </div>
         </div>
       </div>
     </div>
-    
-    <!-- Interests Section (Full Width) -->
-    <div class="w-full mt-16" data-aos="fade-up">
-      <div class="flex items-center gap-2 mb-8">
-        <div class="h-px bg-gradient-to-r from-transparent via-portfolio-teal/30 to-transparent flex-grow"></div>
-        <h3 class="text-2xl font-bold bg-gradient-portfolio text-transparent bg-clip-text">My Interests</h3>
-        <div class="h-px bg-gradient-to-r from-transparent via-portfolio-blue/30 to-transparent flex-grow"></div>
-      </div>
-      
-      <!-- Interests Card -->
-      <div class="w-full rounded-xl overflow-hidden border border-portfolio-teal/20 bg-gradient-to-br from-dark-card to-dark-card/70 backdrop-blur-sm hover:shadow-lg hover:shadow-portfolio-teal/10 transition-all duration-300">
-        <div class="bg-dark-lighter/80 p-5 border-b border-portfolio-teal/20">
-          <h3 class="text-xl font-semibold flex items-center gap-2 text-portfolio-teal">
-            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-            </svg>
-            What I'm Passionate About
-          </h3>
-        </div>
-        <div class="p-6">
-          <!-- Grid of interest cards in a more balanced layout -->
-          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            <div class="flex flex-col items-center text-center group" data-aos="zoom-in" data-aos-delay="100">
-              <div class="bg-blue-500 rounded-full w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <svg class="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                </svg>
-              </div>
-              <h4 class="text-white font-medium mt-4 mb-1">Mechanical Design</h4>
-              <p class="text-gray-400 text-xs">Creating innovative solutions</p>
-            </div>
-             
-            <div class="flex flex-col items-center text-center group" data-aos="zoom-in" data-aos-delay="150">
-              <div class="bg-teal-500 rounded-full w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <svg class="w-10 h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M21.435,11.5h-.38V8.12a1.626,1.626,0,0,0-1.62-1.62h-.63V6.12a1.625,1.625,0,0,0-3.25,0V11.5H8.445V6.12a1.625,1.625,0,0,0-3.25,0V6.5h-.63a1.62,1.62,0,0,0-1.62,1.62V11.5h-.38a.5.5,0,1,0,0,1h.38v3.37a1.622,1.622,0,0,0,1.62,1.63H5.2v.37a1.625,1.625,0,1,0,3.25,0V12.5h7.11v5.37a1.625,1.625,0,1,0,3.25,0V17.5h.63a1.628,1.628,0,0,0,1.62-1.63V12.5h.38a.5.5,0,1,0,0-1ZM5.2,16.5h-.63a.625.625,0,0,1-.62-.63V8.12a.623.623,0,0,1,.62-.62H5.2Zm2.25,1.37a.634.634,0,0,1-.63.63.625.625,0,0,1-.62-.63V6.12a.623.623,0,0,1,.62-.62.632.632,0,0,1,.63.62Zm10.36,0a.625.625,0,1,1-1.25,0V6.12a.625.625,0,0,1,1.25,0Zm2.25-2a.625.625,0,0,1-.62.63h-.63v-9h.63a.623.623,0,0,1,.62.62Z"/>
-              </svg>
-              </div>
-              <h4 class="text-white font-medium mt-4 mb-1">Bodybuilding & Longevity</h4>
-              <p class="text-gray-400 text-xs">Physical & mental balance</p>
-            </div>
-            
-            <div class="flex flex-col items-center text-center group" data-aos="zoom-in" data-aos-delay="200">
-              <div class="bg-blue-600 rounded-full w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <svg class="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-              <h4 class="text-white font-medium mt-4 mb-1">Problem Solving</h4>
-              <p class="text-gray-400 text-xs">Finding creative solutions</p>
-            </div>
-            
-            <div class="flex flex-col items-center text-center group" data-aos="zoom-in" data-aos-delay="250">
-              <div class="bg-indigo-500 rounded-full w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <svg class="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
-              </div>
-              <h4 class="text-white font-medium mt-4 mb-1">Software Dev</h4>
-              <p class="text-gray-400 text-xs">Building digital solutions</p>
-            </div>
-            
-            <div class="flex flex-col items-center text-center group" data-aos="zoom-in" data-aos-delay="300">
-              <div class="bg-blue-400 rounded-full w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <svg class="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h4 class="text-white font-medium mt-4 mb-1">Engineering Analysis</h4>
-              <p class="text-gray-400 text-xs">Optimizing designs</p>
-            </div>
-            
-            <div class="flex flex-col items-center text-center group" data-aos="zoom-in" data-aos-delay="350">
-              <div class="bg-teal-600 rounded-full w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <svg class="w-10 h-10 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                </svg>
-              </div>
-              <h4 class="text-white font-medium mt-4 mb-1">Research</h4>
-              <p class="text-gray-400 text-xs">Exploring new ideas</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Bottom section with education timeline -->
-    <div class="w-full mt-20" data-aos="fade-up">
-      <div class="flex items-center gap-2 mb-10">
-        <div class="h-px bg-gradient-to-r from-transparent via-portfolio-blue/30 to-transparent flex-grow"></div>
-        <h3 class="text-2xl font-bold bg-gradient-portfolio text-transparent bg-clip-text">Education</h3>
-        <div class="h-px bg-gradient-to-r from-transparent via-portfolio-teal/30 to-transparent flex-grow"></div>
-      </div>
-      
-      <div class="relative border-l-2 border-portfolio-blue/30 pl-8 pb-8 ml-4 before:absolute before:w-4 before:h-4 before:bg-portfolio-blue before:rounded-full before:-left-[9px] before:top-0 before:z-10 after:absolute after:w-4 after:h-4 after:bg-portfolio-teal after:rounded-full after:-left-[9px] after:bottom-0">
-        <!-- Education timeline items -->
-        <div class="mb-8 relative" data-aos="fade-left" data-aos-delay="100">
-          <div class="absolute -left-12 p-2 rounded-full bg-dark-card border-2 border-portfolio-blue flex items-center justify-center animate-pulse">
-            <svg class="w-5 h-5 text-portfolio-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-            </svg>
-          </div>
-          <div class="bg-gradient-to-br from-dark-card to-dark-card/60 p-6 rounded-lg border border-portfolio-blue/20 hover:border-portfolio-blue transition-all duration-500 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-portfolio-blue/10 backdrop-blur-sm">
-            <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-              <h4 class="text-lg font-bold text-portfolio-blue">University of Texas at Arlington</h4>
-              <span class="inline-block px-3 py-1 bg-portfolio-blue/10 text-portfolio-blue rounded-full text-sm font-medium mt-2 sm:mt-0">Fall 2022 – Present</span>
-            </div>
-            <p class="text-gray-300">Bachelor of Science in Mechanical Engineering</p>
-          </div>
-        </div>
-        
-        <div class="mb-0 relative" data-aos="fade-left" data-aos-delay="200">
-          <div class="absolute -left-12 p-2 rounded-full bg-dark-card border-2 border-portfolio-teal flex items-center justify-center">
-            <svg class="w-5 h-5 text-portfolio-teal" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path d="M12 14l9-5-9-5-9 5 9 5z" />
-              <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-            </svg>
-          </div>
-          <div class="bg-gradient-to-br from-dark-card to-dark-card/60 p-6 rounded-lg border border-portfolio-teal/20 hover:border-portfolio-teal transition-all duration-500 transform hover:-translate-y-1 hover:shadow-lg hover:shadow-portfolio-teal/10 backdrop-blur-sm">
-            <div class="flex flex-col sm:flex-row sm:justify-between mb-2">
-              <h4 class="text-lg font-bold text-portfolio-teal">Midwestern State University</h4>
-              <span class="inline-block px-3 py-1 bg-portfolio-teal/10 text-portfolio-teal rounded-full text-sm font-medium mt-2 sm:mt-0">Fall 2021 – Spring 2022</span>
-            </div>
-            <p class="text-gray-300">Bachelor of Science in Mechanical Engineering, GPA: 4.0, Division II Golf</p>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </section>

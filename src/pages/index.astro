@@ -2,9 +2,22 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import About from '../components/About.astro';
+import FeaturedCarousel from '../components/FeaturedCarousel.astro';
+import { getCollection } from 'astro:content';
+
+const projectPosts = await getCollection('projects');
+
+const projects = projectPosts.map((post: any) => ({
+  title: post.data.title,
+  description: post.data.description,
+  imageSrc: post.data.image.src,
+  tags: post.data.tags,
+  slug: post.slug,
+}));
 ---
 
 <Layout>
-	<Hero />
-	<About />
+  <Hero />
+  <FeaturedCarousel projects={projects} />
+  <About />
 </Layout>

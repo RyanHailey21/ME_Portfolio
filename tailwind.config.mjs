@@ -4,45 +4,60 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'geist': ['Geist', 'sans-serif'],
+        sans: ['"DM Sans"', 'sans-serif'],
+        display: ['"Cormorant Garamond"', 'serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
-        'portfolio-blue': ' #60A5FA', 
-        'portfolio-teal': ' #1cd8d8', 
-        'dark': {
-          DEFAULT: '#0A0A0A', // Onyx-like very dark gray
-          'lighter': '#141414', // Slightly lighter, still very dark
-          'card': '#1F1F1F'    // Darker card background
-        }
-      },
-      backgroundImage: {
-        'gradient-portfolio': 'linear-gradient(to right, #60a5fa, #1cd8d8)', // Will use updated colors
-        'gradient-dark': 'linear-gradient(135deg, #0A0A0A 0%, #141414 100%)', // Updated with new dark colors
-        'gradient-glow': 'linear-gradient(to bottom, rgba(96, 165, 250, 0.2), rgba(167, 139, 250, 0.2), transparent)', 
+        ink: {
+          DEFAULT: '#0A0A0B',
+          raised: '#111113',
+          card: '#16161A',
+          line: '#262629',
+          subtle: '#1D1D21',
+        },
+        chalk: {
+          DEFAULT: '#EAEAEC',
+          secondary: '#9A9AA8',
+          muted: '#5A5A6A',
+        },
+        brass: {
+          DEFAULT: '#D4A843',
+          light: '#E8C06A',
+          dim: '#1E1810',
+        },
       },
       animation: {
-        'gradient-x': 'gradient-x 15s ease infinite',
-        'float': 'float 6s ease-in-out infinite',
+        'fade-up': 'fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
-        'gradient-x': {
-          '0%, 100%': {
-            'background-size': '200% 200%',
-            'background-position': 'left center'
-          },
-          '50%': {
-            'background-size': '200% 200%',
-            'background-position': 'right center'
-          },
-        },
-        'float': {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-20px)' },
+        fadeUp: {
+          from: { opacity: '0', transform: 'translateY(20px)' },
+          to: { opacity: '1', transform: 'translateY(0)' },
         },
       },
+      typography: () => ({
+        invert: {
+          css: {
+            '--tw-prose-body': '#9A9AA8',
+            '--tw-prose-headings': '#EAEAEC',
+            '--tw-prose-links': '#D4A843',
+            '--tw-prose-bold': '#EAEAEC',
+            '--tw-prose-counters': '#5A5A6A',
+            '--tw-prose-bullets': '#5A5A6A',
+            '--tw-prose-hr': '#262629',
+            '--tw-prose-quotes': '#EAEAEC',
+            '--tw-prose-quote-borders': '#D4A843',
+            '--tw-prose-captions': '#5A5A6A',
+            '--tw-prose-code': '#EAEAEC',
+            '--tw-prose-pre-code': '#9A9AA8',
+            '--tw-prose-pre-bg': '#16161A',
+            '--tw-prose-th-borders': '#262629',
+            '--tw-prose-td-borders': '#1D1D21',
+          },
+        },
+      }),
     },
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
+  plugins: [require('@tailwindcss/typography')],
 }

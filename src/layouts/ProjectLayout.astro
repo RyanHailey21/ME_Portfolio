@@ -1,126 +1,151 @@
 ---
-import Layout from './Layout.astro'; // Main site layout
+import Layout from './Layout.astro';
+
 const baseUrl = import.meta.env.BASE_URL;
 const projectUrl = `${baseUrl}/projects`;
+
 export interface Frontmatter {
   title: string;
   description: string;
-  image: ImageMetadata | string; // Can be imported image or string URL
+  image: ImageMetadata | string;
   tags: string[];
   technologies: string[];
   githubUrl?: string;
-  videoUrl?: ImageMetadata | string; // Can be imported video or string URL for embed
+  videoUrl?: ImageMetadata | string;
 }
 
 const { frontmatter } = Astro.props;
 const { title, description, image, tags, technologies, githubUrl, videoUrl } = frontmatter;
 
-// Helper function to determine video MIME type
 function getVideoType(src: string): string {
   if (src.endsWith('.mp4')) return 'video/mp4';
   if (src.endsWith('.webm')) return 'video/webm';
   if (src.endsWith('.ogg')) return 'video/ogg';
-  if (src.endsWith('.mov')) return 'video/mp4'; // .MOV can sometimes be played as video/mp4, or might need conversion for broader compatibility
-  return 'video/mp4'; // Default fallback
+  if (src.endsWith('.mov')) return 'video/mp4';
+  return 'video/mp4';
 }
 
 const imageSrc = typeof image === 'string' ? image : image.src;
 ---
 
-<Layout title={`${title} | Portfolio`}>
-  <main class="container mx-auto px-4 py-8">
-    <a href= {projectUrl} class="inline-flex items-center text-portfolio-blue hover:text-portfolio-teal mb-6">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L4.414 9H17a1 1 0 110 2H4.414l5.293 5.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+<Layout title={`${title} | Ryan Hailey`}>
+  <main class="max-w-4xl mx-auto px-6 py-14">
+
+    <!-- Back link -->
+    <a href={projectUrl} class="inline-flex items-center gap-2 font-mono text-xs text-chalk-muted hover:text-chalk transition-colors duration-200 tracking-wider uppercase mb-10">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7"/>
       </svg>
-      Back to Projects
+      All Projects
     </a>
 
-    <article class="bg-dark-card rounded-lg shadow-lg overflow-hidden">
-      <div class="p-8">
-        <h1 class="text-4xl font-bold mb-4 bg-gradient-portfolio text-transparent bg-clip-text">
-          {title}
-        </h1>
+    <!-- Title block -->
+    <div class="mb-8 pb-8 border-b border-ink-line">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="block w-8 h-px bg-brass flex-shrink-0"></span>
+        <span class="font-mono text-xs text-brass tracking-[0.2em] uppercase">Project</span>
+      </div>
+      <h1 class="font-display text-4xl md:text-5xl font-light text-chalk leading-tight mb-4">
+        {title}
+      </h1>
+      <p class="text-chalk-secondary text-base leading-relaxed mb-6">{description}</p>
 
-        <div class="flex flex-wrap gap-2 mb-6">
-          {tags.map((tag: string) => (
-            <span class="px-3 py-1 text-sm rounded-full bg-gradient-portfolio text-white">
-              {tag}
-            </span>
-          ))}
-        </div>
-        
-        <img src={imageSrc} alt={title} class="w-full rounded-lg mb-6" />
-        
-        {videoUrl && (
-          <div class="mb-6">
-            <h2 class="text-2xl font-semibold mb-4 text-gray-100">Project Video</h2>
-            {(() => {
-              let finalVideoSrc = '';
-              if (typeof videoUrl === 'object' && videoUrl.src) {
-                // Local video (imported asset)
-                finalVideoSrc = (videoUrl as ImageMetadata).src; // Already processed by Astro
-              } else if (typeof videoUrl === 'string') {
-                if (videoUrl.startsWith('/')) {
-                  // Local video (string path from frontmatter)
-                  finalVideoSrc = baseUrl + videoUrl;
-                } else {
-                  // External video (e.g., YouTube embed)
-                  finalVideoSrc = videoUrl;
-                }
-              }
+      <!-- Tags -->
+      <div class="flex flex-wrap gap-2">
+        {tags.map((tag: string) => (
+          <span class="px-2.5 py-1 font-mono text-[11px] text-chalk-muted border border-ink-line rounded tracking-wide">
+            {tag}
+          </span>
+        ))}
+      </div>
+    </div>
 
-              if (finalVideoSrc) {
-                if (finalVideoSrc.startsWith('/')) { // Local video path
-                  return (
-                    <video controls class="w-full rounded-lg aspect-video">
-                      <source src={finalVideoSrc} type={getVideoType(finalVideoSrc)} />
-                      Your browser does not support the video tag.
-                    </video>
-                  );
-                } else { // External video URL
-                  return (
-                    <div class="relative pb-[56.25%] h-0 overflow-hidden max-w-full"> {/* 16:9 Aspect Ratio */}
-                      <iframe 
-                        src={finalVideoSrc} 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen
-                        class="absolute top-0 left-0 w-full h-full rounded-lg"
-                      ></iframe>
-                    </div>
-                  );
-                }
-              }
-              return null;
-            })()}
+    <!-- Hero image -->
+    <div class="mb-10 border border-ink-line rounded overflow-hidden">
+      <img src={imageSrc} alt={title} class="w-full" />
+    </div>
+
+    <!-- Video (if present) -->
+    {videoUrl && (() => {
+      let finalVideoSrc = '';
+      if (typeof videoUrl === 'object' && (videoUrl as ImageMetadata).src) {
+        finalVideoSrc = (videoUrl as ImageMetadata).src;
+      } else if (typeof videoUrl === 'string') {
+        finalVideoSrc = videoUrl.startsWith('/') ? baseUrl + videoUrl : videoUrl;
+      }
+
+      if (!finalVideoSrc) return null;
+
+      return (
+        <div class="mb-10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="font-mono text-xs text-chalk-muted tracking-[0.15em] uppercase">Project Video</span>
+            <div class="flex-1 h-px bg-ink-line"></div>
           </div>
-        )}
-
-        <div class="prose prose-invert max-w-none mb-6">
-          <slot /> {/* MDX content (full description) goes here */}
-        </div>
-
-        <h2 class="text-2xl font-semibold mb-4 text-gray-100">Technologies Used</h2>
-        <ul class="list-disc list-inside mb-6 text-gray-300">
-          {technologies.map((tech: string) => (
-            <li>{tech}</li>
-          ))}
-        </ul>
-
-        <div class="flex gap-4">
-          {githubUrl && (
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-block px-6 py-3 bg-gradient-portfolio text-white rounded-lg hover:opacity-90 transition-opacity"
-            >
-              View on GitHub
-            </a>
+          {finalVideoSrc.startsWith('/') ? (
+            <video controls class="w-full rounded border border-ink-line aspect-video">
+              <source src={finalVideoSrc} type={getVideoType(finalVideoSrc)} />
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <div class="relative pb-[56.25%] h-0 overflow-hidden border border-ink-line rounded">
+              <iframe
+                src={finalVideoSrc}
+                style="border: 0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="absolute top-0 left-0 w-full h-full"
+              ></iframe>
+            </div>
           )}
         </div>
+      );
+    })()}
+
+    <!-- MDX content -->
+    <div class="prose prose-invert prose-lg max-w-none mb-12
+      prose-headings:font-display prose-headings:font-light prose-headings:text-chalk
+      prose-p:text-chalk-secondary prose-p:leading-relaxed
+      prose-a:text-brass prose-a:no-underline hover:prose-a:underline
+      prose-code:text-chalk-secondary prose-code:bg-ink-card prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
+      prose-pre:bg-ink-card prose-pre:border prose-pre:border-ink-line
+      prose-strong:text-chalk
+      prose-li:text-chalk-secondary
+      prose-hr:border-ink-line">
+      <slot />
+    </div>
+
+    <!-- Technologies -->
+    <div class="pt-8 border-t border-ink-line mb-8">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="font-mono text-xs text-chalk-muted tracking-[0.15em] uppercase">Technologies</span>
+        <div class="flex-1 h-px bg-ink-line"></div>
       </div>
-    </article>
+      <div class="flex flex-wrap gap-2">
+        {technologies.map((tech: string) => (
+          <span class="px-3 py-1.5 font-mono text-xs text-chalk-secondary border border-ink-line rounded bg-ink-card">
+            {tech}
+          </span>
+        ))}
+      </div>
+    </div>
+
+    <!-- GitHub link -->
+    {githubUrl && (
+      <div class="pt-4">
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2.5 px-5 py-2.5 border border-ink-line text-sm font-medium text-chalk-secondary rounded hover:border-chalk-muted hover:text-chalk transition-colors duration-200"
+        >
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+          </svg>
+          View on GitHub
+        </a>
+      </div>
+    )}
+
   </main>
 </Layout>

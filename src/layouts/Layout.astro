@@ -2,46 +2,54 @@
 import Navigation from '../components/Navigation.astro';
 
 interface Props {
-	title?: string;
+  title?: string;
 }
 
-const { title = "Portfolio" } = Astro.props;
+const { title = 'Ryan Hailey — Mechanical Engineer' } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Personal portfolio showcasing mechanical engineering projects and skills" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href="favicon.png" />
-		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-		<style>
-			@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Boldonse&family=Geist:wght@100..900&family=Patrick+Hand&display=swap');
-		</style>
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-		<style is:global>
-			html {
-				scroll-behavior: smooth;
-			}
-		</style>
-	</head>
-	<body class="bg-gradient-dark text-gray-100 font-geist">
-		<div class="fixed inset-0 bg-gradient-dark opacity-100"></div>
-		<Navigation />
-		<div class="pt-16 relative">
-			<slot />
-		</div>
-		<script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-		<script is:inline>
-			document.addEventListener('DOMContentLoaded', () => {
-				AOS.init({
-					duration: 800,
-					once: false,
-					mirror: true
-				});
-			});
-		</script>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Mechanical engineering portfolio — Ryan Hailey, UTA" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=JetBrains+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <style is:global>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      ::selection {
+        background-color: rgba(212, 168, 67, 0.18);
+        color: #E8C06A;
+      }
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(255,255,255,0.022) 1px, transparent 1px);
+        background-size: 28px 28px;
+        pointer-events: none;
+        z-index: 0;
+      }
+    </style>
+  </head>
+  <body class="bg-ink text-chalk font-sans min-h-screen">
+    <Navigation />
+    <div class="pt-16 relative z-10">
+      <slot />
+    </div>
+  </body>
 </html>

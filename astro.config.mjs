@@ -7,4 +7,7 @@ export default defineConfig({
   site: 'https://RyanHailey21.github.io' ,
   base: '/ME_Portfolio',
   integrations: [tailwind(), mdx()],
+  vite: {
+    assetsInclude: ['**/*.HEIC', '**/*.heic'],
+  },
 });

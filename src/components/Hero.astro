@@ -1,75 +1,68 @@
 ---
-import profilePhoto from '../assets/images/Profile Photo.png';
-const baseUrl = import.meta.env.BASE_URL
+import profilePhoto from '../assets/images/Profile Photo.webp';
+const baseUrl = import.meta.env.BASE_URL;
 const projectsUrl = `${baseUrl}/projects`;
 const aboutUrl = `${baseUrl}/#about`;
 ---
 
-<section class="relative py-20">
-  <div class="absolute inset-0 bg-gradient-to-r from-portfolio-blue/0 to-portfolio-purple/0 animate-gradient-x"></div>
-  <div class="container mx-auto px-4 relative">
-    <div class="flex flex-col md:flex-row items-center gap-12">
-      <div class="md:w-1/2" data-aos="fade-right">
-        <h1 class="flex items-center gap-3 text-4xl md:text-6xl font-bold mb-6">
-          <span class="bg-gradient-portfolio text-transparent bg-clip-text animate-gradient-x">
-            Hi, My name is Ryan
-          </span>
-          <span class="inline-block align-middle animate-wave text-5xl md:text-7xl select-none" aria-label="Waving hand" role="img" style="display:inline-block;transform-origin:70% 70%;">
-            👋
-          </span>
+<section class="min-h-[calc(100vh-4rem)] flex items-center">
+  <div class="max-w-6xl mx-auto px-6 py-20 w-full">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-16 items-center">
+
+      <!-- Text -->
+      <div>
+        <div class="flex items-center gap-3 mb-7 opacity-0 animate-fade-up" style="animation-delay: 0ms; animation-fill-mode: forwards;">
+          <span class="block w-8 h-px bg-brass flex-shrink-0"></span>
+          <span class="font-mono text-xs text-brass tracking-[0.2em] uppercase">Mechanical Engineer</span>
+        </div>
+
+        <h1 class="font-display font-light leading-[0.9] text-chalk mb-8 opacity-0 animate-fade-up" style="animation-delay: 80ms; animation-fill-mode: forwards;">
+          <span class="block text-6xl md:text-7xl lg:text-8xl">Ryan</span>
+          <span class="block text-6xl md:text-7xl lg:text-8xl italic text-brass">Hailey</span>
         </h1>
-        <style>
-          @keyframes wave {
-            0% { transform: rotate(0deg); }
-            10% { transform: rotate(14deg); }
-            20% { transform: rotate(-8deg); }
-            30% { transform: rotate(14deg); }
-            40% { transform: rotate(-4deg); }
-            50% { transform: rotate(10deg); }
-            60% { transform: rotate(0deg); }
-            100% { transform: rotate(0deg); }
-          }
-          .animate-wave {
-            animation: wave 2s infinite;
-            display: inline-block;
-            transform-origin: 70% 70%;
-            filter: none;
-          }
-        </style>
-        <p class="text-2xl text-gray-200 mb-8 leading-relaxed">
-          Current interests include robotics, automation, lifting weights and longevity. 
-          I'm a little obsessed wtih learning how things work... <br> (but I swear it's healthy lol)
+
+        <p class="text-chalk-secondary text-lg leading-relaxed max-w-lg mb-3 opacity-0 animate-fade-up" style="animation-delay: 180ms; animation-fill-mode: forwards;">
+          Current interests include robotics, automation, lifting weights and longevity.
+          I'm a little obsessed with learning how things work.
         </p>
-        <div class="flex gap-4">
-          <a 
-            href={projectsUrl} 
-            class="group inline-block px-8 py-4 bg-gradient-portfolio text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-portfolio-blue/20 font-semibold"
-          >
-            <span class="flex items-center gap-2">
-              View My Projects
-              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </span>
+
+        <p class="font-mono text-xs text-chalk-muted tracking-[0.15em] mb-10 opacity-0 animate-fade-up" style="animation-delay: 240ms; animation-fill-mode: forwards;">
+          BS MECHANICAL ENGINEERING · UT ARLINGTON · CLASS OF 2026
+        </p>
+
+        <div class="flex flex-wrap gap-3 opacity-0 animate-fade-up" style="animation-delay: 320ms; animation-fill-mode: forwards;">
+          <a href={projectsUrl}
+             class="inline-flex items-center gap-2 px-6 py-3 bg-brass text-ink text-sm font-medium tracking-wide rounded hover:bg-brass-light transition-colors duration-200">
+            View Projects
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
           </a>
-          <a 
-            href={aboutUrl}
-            class="group inline-block px-8 py-4 bg-dark-card text-white rounded-lg border-2 border-portfolio-blue/30 hover:border-portfolio-blue transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-portfolio-blue/20 font-semibold"
-          >
-            Learn More
+          <a href={aboutUrl}
+             class="inline-flex items-center gap-2 px-6 py-3 border border-ink-line text-sm font-medium text-chalk-secondary tracking-wide rounded hover:border-chalk-muted hover:text-chalk transition-colors duration-200">
+            About Me
           </a>
         </div>
       </div>
-      <div class="md:w-1/2" data-aos="fade-left">
-        <div class="relative animate-float">
-          <div class="absolute -inset-4 bg-gradient-portfolio rounded-full blur-3xl opacity-30 animate-pulse"></div>
-          <img 
-            src={profilePhoto.src}
-            alt="Profile" 
-            class="relative rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-4 border-white/20 shadow-xl mx-auto hover:border-portfolio-blue/50 transition-all duration-300"
-          />
+
+      <!-- Photo -->
+      <div class="hidden lg:flex justify-end opacity-0 animate-fade-up" style="animation-delay: 140ms; animation-fill-mode: forwards;">
+        <div class="relative">
+          <div class="absolute -inset-3 border border-ink-line rounded-sm pointer-events-none"></div>
+          <div class="absolute -bottom-3 -right-3 w-full h-full border border-brass/25 rounded-sm pointer-events-none"></div>
+          <div class="relative w-80 h-80 xl:w-96 xl:h-96 overflow-hidden rounded-xl">
+            <img
+              src={profilePhoto.src}
+              alt="Ryan Hailey"
+              class="w-full h-full object-cover scale-125 object-[center_60%]"
+            />
+          </div>
+          <div class="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-brass -translate-y-1 translate-x-1 pointer-events-none"></div>
+          <div class="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-brass translate-y-1 -translate-x-1 pointer-events-none"></div>
         </div>
       </div>
+
     </div>
+
   </div>
 </section>
