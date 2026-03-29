@@ -79,3 +79,15 @@ Custom Tailwind theme in `tailwind.config.mjs`:
 ### Deployment
 
 Push to `main` → GitHub Actions (`astro.yml`) builds and deploys to GitHub Pages automatically.
+
+## Architecture Diagram
+
+A developer-facing architecture reference lives at [ARCHITECTURE.md](ARCHITECTURE.md).
+
+**Keep it in sync.** Update `ARCHITECTURE.md` whenever you:
+- Add, remove, or rename a page, layout, or component
+- Add a new content collection or change the schema
+- Add a new project (update the directory map and file list)
+- Change routing structure or the base path
+- Add or rename a design token (color, font, animation)
+- Add a new build step or change the deploy pipeline
