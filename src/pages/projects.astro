@@ -13,7 +13,8 @@ interface Project {
   slug: string;
 }
 
-const projectPosts = await getCollection('projects');
+const projectPosts = (await getCollection('projects'))
+  .sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99));
 
 const projects: Project[] = projectPosts.map((post: any) => ({
   title: post.data.title,

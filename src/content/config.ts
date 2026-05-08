@@ -10,6 +10,7 @@ const projectCollection = defineCollection({
         technologies: z.array(z.string()),
         githubUrl: z.string().optional(),
         videoUrl: z.string().optional(),
+        sortOrder: z.number().optional(),
     }),
 });
 

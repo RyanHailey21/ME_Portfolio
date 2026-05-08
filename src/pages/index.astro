@@ -5,7 +5,8 @@ import About from '../components/About.astro';
 import FeaturedCarousel from '../components/FeaturedCarousel.astro';
 import { getCollection } from 'astro:content';
 
-const projectPosts = await getCollection('projects');
+const projectPosts = (await getCollection('projects'))
+  .sort((a, b) => (a.data.sortOrder ?? 99) - (b.data.sortOrder ?? 99));
 
 const projects = projectPosts.map((post: any) => ({
   title: post.data.title,
