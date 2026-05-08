@@ -19,19 +19,21 @@ ME_Portfolio/
 │   ├── assets/images/               Processed by Astro's image pipeline
 │   │   ├── Profile Photo.webp       Hero avatar
 │   │   └── projects/                One subfolder per project
-│   │       ├── aircushionsuspensionanalysis/
-│   │       ├── bottleservice/
-│   │       ├── suspensionsystemestimation/
-│   │       ├── thermalconductionmodeling/
-│   │       ├── thiswebsite/
-│   │       ├── touchscreenplatform/
-│   │       └── wheelcover/
+│   │       ├── air-cushion-suspension-analysis/
+│   │       ├── autonomous-ugv/
+│   │       ├── bottle-service/
+│   │       ├── suspension-system-estimation/
+│   │       ├── thermal-conduction-modeling/
+│   │       ├── this-website/
+│   │       ├── touchscreen-platform/
+│   │       └── wheel-cover/
 │   │
 │   ├── content/
 │   │   ├── config.ts                Zod schema for projects collection
 │   │   └── projects/                One .mdx file per project
 │   │       ├── air-cushion-suspension-analysis.mdx
 │   │       ├── autobalancing-platform.mdx
+│   │       ├── autonomous-ugv.mdx
 │   │       ├── bottle-service.mdx
 │   │       ├── robot-wheel-cover.mdx
 │   │       ├── suspension-system-estimation.mdx

@@ -1,14 +1,75 @@
 ---
-title: 'Robot Wheel Cover'
-description: 'Designed and manufactured custom wheel cover for fighteing robot'
-image: '../../assets/images/projects/wheelcover/WheelCover.png'
-tags: ['CAD']
-technologies: ['Solidworks', '3D Printing (Bambu Printer)', 'Vernier Calipers', 'Heat Inserts', 'Gyroscopic Wrench']
+title: 'RoboMasters Robot Development'
+description: 'Drivetrain lead for UTA RoboMasters across three robots: designing suspension, chassis, and wheel systems for ARC North America at Purdue.'
+image: '../../assets/images/projects/wheel-cover/robot-competition.jpg'
+tags: ['Design', 'Hardware', 'CAD', 'FEA', 'Research']
+technologies: ['SolidWorks', 'Onshape', 'Fusion 360', 'Ansys', '3D Printing', 'RoboMasters']
 ---
 
-## In colaboration with the RoboMasters team at the University of Texas Arlington, we bring to you the first ever UTA fighting robot.
+import {Image} from 'astro:assets';
+import RobotHero from '../../assets/images/projects/wheel-cover/robot-competition.jpg';
+import RobotFront from '../../assets/images/projects/wheel-cover/robot-front.jpg';
+import RobotAssembled from '../../assets/images/projects/wheel-cover/robot-assembled.jpeg';
+import TeamWork from '../../assets/images/projects/wheel-cover/team-assembly.jpg';
+import RobotsWorkbench from '../../assets/images/projects/wheel-cover/robots-workbench.jpg';
+import OnshapeAssembly from '../../assets/images/projects/wheel-cover/onshape-assembly.png';
+import WheelCoverCAD from '../../assets/images/projects/wheel-cover/wheel-cover-cad.png';
 
-This project is in colaboration with the RoboMasters competition. We were tasked with developing a fighting robot with a full 360 degree turret. I had the privelege of particaipating with the drive train team.
-<p>
-The drive train team was responsible for the entire lower half of the robot. We designed and muanufactured a custom base, wheel mounts, pressure plate mounts, and wheel covers, as well as various smaller components to house the electrical hardware.
-</p>
+## Overview
+
+The RoboMasters competition, run by DJI, challenges university teams to design, build, and operate a fleet of combat robots that battle in a structured arena game. UTA's team competes with a roster of three robots: a **Standard**, a **Hero**, and a **Sentry** — each with distinct roles, drive requirements, and mechanical constraints.
+
+As **Drivetrain Lead**, I am responsible for the complete lower chassis of all three robots. This covers suspension design and analysis, chassis geometry, wheel and motor mounting, manufacturing, assembly, and field repairs. The team is targeting the **ARC North America competition at Purdue** this summer.
+
+<Image src={RobotHero} alt="UTA RoboMasters Standard robot fully assembled under competition lighting" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Role and Responsibilities
+
+Taking on the drivetrain lead role meant owning every aspect of how these robots move. Day-to-day responsibilities include:
+
+- **Suspension design:** Modeling and iterating suspension geometry in SolidWorks, Onshape, and Fusion 360; running structural analysis in Ansys to validate load cases
+- **Chassis design:** Laying out the lower frame to meet competition weight limits, packaging constraints, and center-of-mass targets
+- **Manufacturing:** 3D printing structural and cosmetic components, working with the machine shop for metal parts, and managing print orientation and infill for structural integrity
+- **Assembly:** Building up drivetrains from scratch, fitting suspension arms, seating motors, mounting wheel assemblies, and routing wiring
+- **Testing:** Field-testing robots for drive response, handling, and durability; tuning suspension geometry based on observed behavior
+- **Repairs:** Diagnosing and fixing drivetrain failures under time pressure between practice sessions and competition runs
+- **Team leadership:** Coordinating the drivetrain sub-team, assigning tasks, unblocking teammates, and keeping build progress on schedule
+
+<Image src={RobotsWorkbench} alt="Multiple robots in various stages of assembly on the workbench" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Drivetrain Design
+
+All three robots use **mecanum wheels** for omnidirectional movement, which places unique lateral and diagonal load demands on the suspension and wheel mounts compared to a conventional differential drive. Each wheel hub is independently suspended to maintain ground contact across uneven arena surfaces and absorb impacts from combat.
+
+<Image src={RobotFront} alt="Front view of the Standard robot showing mecanum wheel suspension geometry" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+Key design considerations across all three robots:
+
+- **Suspension geometry:** Travel, preload, and spring rate are tuned per-robot based on weight and expected loading
+- **Chassis stiffness:** Frame members are sized to resist torsion from mecanum lateral forces without adding unnecessary weight
+- **Serviceability:** Wheel assemblies are designed to be removed and replaced quickly during competition downtime
+- **Weight budget:** Drivetrain mass is tracked against the competition weight limit, with components iterated in CAD before committing to print or fab
+
+## CAD and Analysis
+
+Design work is split across tools depending on the task. **SolidWorks** is used for detailed part modeling and assemblies where parametric control and mate constraints are critical. **Onshape** supports collaborative work when multiple team members need to access and edit the same assembly simultaneously. **Fusion 360** is used for organic geometry and integrated CAM when parts go directly to the machine shop.
+
+<Image src={OnshapeAssembly} alt="Onshape full robot assembly for RoboMasters Season 2" style="max-width: 750px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+<Image src={WheelCoverCAD} alt="SolidWorks model of the wheel cover alongside the full robot assembly" style="max-width: 700px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+Structural validation is done in **Ansys**, with FEA used to check stress concentrations in suspension arms and chassis mounting points under worst-case loading. This has caught several design issues before parts were manufactured.
+
+## Manufacturing and Assembly
+
+Most drivetrain components are 3D printed on a Bambu printer. Print orientation is chosen to align layer lines with primary load paths, and infill and wall count are adjusted based on Ansys results. Metal parts (shafts, brackets, hardware) are sourced or machined in the campus shop.
+
+<Image src={RobotAssembled} alt="Fully assembled Standard robot with LED underglow" style="max-width: 500px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+Assembly involves close coordination with the electrical sub-team to route motor and encoder wiring through the chassis without interfering with suspension travel. Clearance checks are done in the CAD assembly before physical build to catch interference early.
+
+## Team and Competition
+
+<Image src={TeamWork} alt="Team members assembling the turret section of a competition robot" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+The team is preparing all three robots for **ARC North America at Purdue**, where they will compete against university teams from across the continent. Getting three distinct robots to competition-ready condition simultaneously requires careful prioritization: critical drivetrain systems are built and tested first, with cosmetic and secondary components completed as time allows.
