@@ -18,6 +18,8 @@ import ElectronicsStack from '../../assets/images/projects/autonomouse-autorotat
 import StuckInTree from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/drone-stuck-in-tree.jpg';
 import TeamFullGroup from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/team-full-group.jpg';
 
+export const baseUrl = import.meta.env.BASE_URL;
+
 ## Overview
 
 This capstone project built a quadcopter for UT Arlington's 3D-Printed Aircraft Competition, rotary wing category: the rules allow only 8 seconds of powered flight and a 60 ft maximum altitude, and the winner is whoever stays airborne longest after that. Our approach was to sprint the vehicle to altitude, cut power, and let a purpose-designed autorotation rotor on top of the airframe spin up and carry the whole aircraft down slowly, like a maple seed. The body and rotor mounting hardware are PLA; the rotor blades themselves are ASA aero, printed as airfoils. We won first place in the rotary wing category.
@@ -40,6 +42,12 @@ The rotor blades were the hardest part to manufacture. ASA aero is a foaming fil
 
 <Image src={BladeProfile} alt="Side profile of a printed rotor blade showing the optimized NACA airfoil section" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
 
+Before it ever went on the airframe, we hand-spun the finished rotor outdoors to check balance and autorotation behavior in real wind.
+
+<video controls class="rounded border border-ink-line" style="max-width: 420px; width: 100%; margin: 2rem 0;">
+  <source src={`${baseUrl}/videos/autorotation-blade-spin-test.mov`} type="video/mp4" />
+</video>
+
 ## Airframe Iteration
 
 The body, arms, and rotor mount were printed in PLA. The first build used 60 mm arms with 3-inch driven propellers, and an early test flight showed the airframe didn't have enough yaw control authority: the drone spun uncontrollably on the way up, driven by reaction torque from the large autorotation rotor sitting on its one-way bearing on top of the body. Extending the arms to 85 mm and moving up to 4-inch propellers gave the driven motors enough yaw moment arm to cancel that torque, and the spin-up problem disappeared.
@@ -53,6 +61,12 @@ Flight came from a **BetaFPV F4** flight controller (2-3S) running **Betaflight*
 <Image src={ElectronicsStack} alt="BetaFPV F4 flight controller stack with ESP32-S3 companion board wired in" style="max-width: 550px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
 
 The ESP32 exposed a **Bluetooth LE** interface for starting the mission and calibrating altitude controller gains from a phone, with no need to reflash firmware between test flights. Onboard, it fused the flight controller's barometer, IMU, and vario data through a **Kalman filter** to get a clean altitude and vertical-speed estimate, then closed the loop with a cascaded controller that took over from an open-loop sprint phase once the vehicle passed 50 ft, precisely regulating the climb to the 60 ft ceiling. In the final seconds before the 8-second power cutoff, the ESP32 commanded a hard yaw input in the correct autorotation direction to pre-spin the rotor, so it was already turning at cutoff instead of spinning up from rest.
+
+Before flying outdoors, we tuned the cascaded altitude controller's gains indoors in a netted low-altitude test cage, watching the ESP32's telemetry stream live on a laptop while adjusting parameters over Bluetooth between hops.
+
+<video controls class="rounded border border-ink-line" style="max-width: 420px; width: 100%; margin: 2rem 0;">
+  <source src={`${baseUrl}/videos/cascaded-controller-tuning.mov`} type="video/mp4" />
+</video>
 
 Field testing was not without incident. On one test flight the drone drifted off course during the climb and got stuck at the top of a tree, leaving the whole team standing underneath trying to figure out how to get it down.
 
