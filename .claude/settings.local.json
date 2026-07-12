@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python -c ' *)"
+      "Bash(python -c ' *)",
+      "Bash(pip show *)",
+      "Bash(node -e \"const sharp=require\\('c:/Users/ryanh/ME_Portfolio/node_modules/sharp'\\); console.log\\(sharp.format.heif\\)\")",
+      "Bash(pip install *)",
+      "Bash(python -)"
     ]
   }
 }

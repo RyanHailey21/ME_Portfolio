@@ -1,0 +1,72 @@
+---
+title: 'Autorotation Recovery Drone'
+description: "Quadcopter that free-falls under an optimized autorotation rotor after an 8-second powered climb to 60 ft. Won 1st place, Rotary Wing category, UT Arlington's 3D-Printed Aircraft Competition."
+image: '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/team-with-aircraft.jpg'
+tags: ['Code', 'Research', 'Hardware', 'CAD', 'Python', 'C++']
+technologies: ['AeroSandbox', 'NeuralFoil', 'CasADi', 'IPOPT', 'OnShape', 'ESP32-S3', 'BetaFPV F4 Flight Controller', 'Betaflight', 'MSP Protocol', 'Kalman Filter', 'Bluetooth LE', 'PLA', 'ASA Aero']
+sortOrder: 0
+videoUrl: '/videos/autorotation-drone-flight-test.mov'
+---
+
+import {Image} from 'astro:assets';
+import TeamWithAircraft from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/team-with-aircraft.jpg';
+import CadModel from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/cad-model.jpg';
+import BladePrint from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/autorotation-blade-print.jpg';
+import BladeProfile from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/blade-airfoil-profile.jpg';
+import PrinterBed from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/frame-printer-bed.jpg';
+import FrameArms from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/frame-arms.jpg';
+import ElectronicsStack from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/electronics-stack.jpg';
+import FieldTest from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/field-test-watching.jpg';
+import Certificate from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/first-place-certificate.jpg';
+
+## Overview
+
+This capstone project built a quadcopter for UT Arlington's 3D-Printed Aircraft Competition, rotary wing category: the rules allow only 8 seconds of powered flight and a 60 ft maximum altitude, and the winner is whoever stays airborne longest after that. Our approach was to sprint the vehicle to altitude, cut power, and let a purpose-designed autorotation rotor on top of the airframe spin up and carry the whole aircraft down slowly, like a maple seed. The body and rotor mounting hardware are PLA; the rotor blades themselves are ASA aero, printed as airfoils. We won first place in the rotary wing category.
+
+<Image src={TeamWithAircraft} alt="Team holding the finished autorotation drone with rotor blades extended" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Rotor Optimization
+
+Fall time is entirely a function of the autorotation rotor's geometry, so before building anything we framed it as a numerical optimization problem. Using **AeroSandbox** and **NeuralFoil** to evaluate 2D NACA airfoil sections, we solved a nonlinear program in **CasADi** with the **IPOPT** solver, simulating the coupled fall/autorotation dynamics and maximizing time-to-ground. The optimizer searched over rotor radius, root and tip chord, blade twist, collective pitch, and the NACA 4-digit profile itself, all simultaneously rather than tuning each parameter by hand.
+
+<Image src={CadModel} alt="OnShape CAD render of the full drone assembly with autorotation rotor blades" style="max-width: 800px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+Once the optimizer converged on a blade geometry, we modeled the rotor and its one-way-bearing hub mount in **OnShape** and built out the full airframe assembly around it.
+
+## Manufacturing the Blades
+
+The rotor blades were the hardest part to manufacture. ASA aero is a foaming filament, and getting a clean airfoil cross-section out of it meant slicing with internal ribs in vase mode rather than solid infill. The bigger constraint was that the print could never pause the tool tip mid-layer: ASA aero's foaming action backdrives filament out of the nozzle during any stationary dwell, which floods the layer with stringing and ruins the print. Getting a travel-move-free toolpath through the slicer took several failed prints before it held together.
+
+<Image src={PrinterBed} alt="3D printer bed with the drone frame and rotor hub mid-print" style="max-width: 700px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+<Image src={BladePrint} alt="Completed ASA aero autorotation blade showing internal vase-mode rib structure" style="max-width: 500px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+<Image src={BladeProfile} alt="Side profile of a printed rotor blade showing the optimized NACA airfoil section" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Airframe Iteration
+
+The body, arms, and rotor mount were printed in PLA. The first build used 60 mm arms with 3-inch driven propellers, and an early test flight showed the airframe didn't have enough yaw control authority: the drone spun uncontrollably on the way up, driven by reaction torque from the large autorotation rotor sitting on its one-way bearing on top of the body. Extending the arms to 85 mm and moving up to 4-inch propellers gave the driven motors enough yaw moment arm to cancel that torque, and the spin-up problem disappeared.
+
+<Image src={FrameArms} alt="3D printed PLA quadcopter frame arms" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Avionics and Autonomy
+
+Flight came from a **BetaFPV F4** flight controller (2-3S) running **Betaflight** for low-level stabilization, powered by a 450 mAh 3S battery driving four 3500KV motors. An **ESP32-S3** rode alongside it, connected over the **MSP** protocol to read barometer, IMU, and vario data directly from the flight controller.
+
+<Image src={ElectronicsStack} alt="BetaFPV F4 flight controller stack with ESP32-S3 companion board wired in" style="max-width: 550px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+The ESP32 exposed a **Bluetooth LE** interface for starting the mission and calibrating altitude controller gains from a phone, with no need to reflash firmware between test flights. Onboard, it fused the flight controller's barometer, IMU, and vario data through a **Kalman filter** to get a clean altitude and vertical-speed estimate, then closed the loop with a cascaded controller that took over from an open-loop sprint phase once the vehicle passed 50 ft, precisely regulating the climb to the 60 ft ceiling. In the final seconds before the 8-second power cutoff, the ESP32 commanded a hard yaw input in the correct autorotation direction to pre-spin the rotor, so it was already turning at cutoff instead of spinning up from rest.
+
+<Image src={FieldTest} alt="Team watching the drone during a field test flight" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+## Results
+
+<Image src={Certificate} alt="Team holding the first place certificate, Rotary Wing category, on the competition field" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+
+**First place, Rotary Wing category**, UT Arlington's 3D-Printed Aircraft Competition.
+
+**Key takeaways:**
+- Framing the rotor design as a coupled aerodynamic/dynamic optimization problem (AeroSandbox + NeuralFoil + CasADi/IPOPT) found a better blade than hand-tuning would have, and did it before any material was cut
+- Foaming filaments like ASA aero impose real constraints on toolpath planning, not just print settings — vase mode and travel-free paths were required, not optional
+- Yaw control authority has to account for reaction torque from any large free-spinning mass on the airframe, not just the driven propellers
+- Reading state off an existing flight controller over MSP let us add a custom altitude autonomy layer without touching Betaflight's proven low-level stabilization
