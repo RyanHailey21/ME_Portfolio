@@ -1,7 +1,7 @@
 ---
 title: 'Autorotation Recovery Drone'
 description: "Quadcopter that free-falls under an optimized autorotation rotor after an 8-second powered climb to 60 ft. Won 1st place, Rotary Wing category, UT Arlington's 3D-Printed Aircraft Competition."
-image: '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/team-with-aircraft.jpg'
+image: '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/first-place-certificate.jpg'
 tags: ['Code', 'Research', 'Hardware', 'CAD', 'Python', 'C++']
 technologies: ['AeroSandbox', 'NeuralFoil', 'CasADi', 'IPOPT', 'OnShape', 'ESP32-S3', 'BetaFPV F4 Flight Controller', 'Betaflight', 'MSP Protocol', 'Kalman Filter', 'Bluetooth LE', 'PLA', 'ASA Aero']
 sortOrder: 0
@@ -9,21 +9,18 @@ videoUrl: '/videos/autorotation-drone-flight-test.mov'
 ---
 
 import {Image} from 'astro:assets';
-import TeamWithAircraft from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/team-with-aircraft.jpg';
 import CadModel from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/cad-model.jpg';
 import BladePrint from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/autorotation-blade-print.jpg';
 import BladeProfile from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/blade-airfoil-profile.jpg';
 import PrinterBed from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/frame-printer-bed.jpg';
 import FrameArms from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/frame-arms.jpg';
 import ElectronicsStack from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/electronics-stack.jpg';
-import FieldTest from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/field-test-watching.jpg';
-import Certificate from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/first-place-certificate.jpg';
+import StuckInTree from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/drone-stuck-in-tree.jpg';
+import TeamFullGroup from '../../assets/images/projects/autonomouse-autorotation-drone-3dpac/team-full-group.jpg';
 
 ## Overview
 
 This capstone project built a quadcopter for UT Arlington's 3D-Printed Aircraft Competition, rotary wing category: the rules allow only 8 seconds of powered flight and a 60 ft maximum altitude, and the winner is whoever stays airborne longest after that. Our approach was to sprint the vehicle to altitude, cut power, and let a purpose-designed autorotation rotor on top of the airframe spin up and carry the whole aircraft down slowly, like a maple seed. The body and rotor mounting hardware are PLA; the rotor blades themselves are ASA aero, printed as airfoils. We won first place in the rotary wing category.
-
-<Image src={TeamWithAircraft} alt="Team holding the finished autorotation drone with rotor blades extended" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
 
 ## Rotor Optimization
 
@@ -57,16 +54,18 @@ Flight came from a **BetaFPV F4** flight controller (2-3S) running **Betaflight*
 
 The ESP32 exposed a **Bluetooth LE** interface for starting the mission and calibrating altitude controller gains from a phone, with no need to reflash firmware between test flights. Onboard, it fused the flight controller's barometer, IMU, and vario data through a **Kalman filter** to get a clean altitude and vertical-speed estimate, then closed the loop with a cascaded controller that took over from an open-loop sprint phase once the vehicle passed 50 ft, precisely regulating the climb to the 60 ft ceiling. In the final seconds before the 8-second power cutoff, the ESP32 commanded a hard yaw input in the correct autorotation direction to pre-spin the rotor, so it was already turning at cutoff instead of spinning up from rest.
 
-<Image src={FieldTest} alt="Team watching the drone during a field test flight" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+Field testing was not without incident. On one test flight the drone drifted off course during the climb and got stuck at the top of a tree, leaving the whole team standing underneath trying to figure out how to get it down.
+
+<Image src={StuckInTree} alt="Team looking up at a tree after the drone got stuck at the top during a test flight" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
 
 ## Results
 
-<Image src={Certificate} alt="Team holding the first place certificate, Rotary Wing category, on the competition field" style="max-width: 600px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
+<Image src={TeamFullGroup} alt="Full team on the track holding the completed autorotation rotor assembly" style="max-width: 700px; width: 100%; margin: 2rem 0; border-radius: 12px; box-shadow: 0 4px 24px #0002;" />
 
 **First place, Rotary Wing category**, UT Arlington's 3D-Printed Aircraft Competition.
 
 **Key takeaways:**
 - Framing the rotor design as a coupled aerodynamic/dynamic optimization problem (AeroSandbox + NeuralFoil + CasADi/IPOPT) found a better blade than hand-tuning would have, and did it before any material was cut
-- Foaming filaments like ASA aero impose real constraints on toolpath planning, not just print settings — vase mode and travel-free paths were required, not optional
+- Foaming filaments like ASA aero impose real constraints on toolpath planning, not just print settings; vase mode and travel-free paths were required, not optional
 - Yaw control authority has to account for reaction torque from any large free-spinning mass on the airframe, not just the driven propellers
 - Reading state off an existing flight controller over MSP let us add a custom altitude autonomy layer without touching Betaflight's proven low-level stabilization
