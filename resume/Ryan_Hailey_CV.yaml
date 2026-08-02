@@ -1,0 +1,111 @@
+# yaml-language-server: $schema=https://github.com/rendercv/rendercv/blob/main/schema.json?raw=true
+
+cv:
+  name: Ryan Hailey
+  headline: Mechanical Engineering Student - Robotics and Automation
+  location: Mansfield, TX
+  email: ryanmhailey1@gmail.com
+  phone: +1 817 975 1928
+  website: https://ryanhailey21.github.io/ME_Portfolio
+  social_networks:
+    - network: LinkedIn
+      username: ryan-hailey-a96070344
+
+  sections:
+    technical_skills:
+      - label: Programming & Controls
+        details: C, C++, Python, MATLAB, PID Controllers, Automation
+      - label: CAD, CAE & Manufacturing
+        details: SolidWorks, Onshape, Creo, CadQuery, ANSYS Workbench, 3D Printing, Additive Manufacturing, Mechanical Assembly, Prototyping
+      - label: Optimization
+        details: CasADi, IPOPT, AeroSandbox
+      - label: Robotics & Embedded
+        details: ROS2/Nav2, ESP32, Teensy 4.1, Pixhawk, Betaflight, Sensor Fusion, Drivetrain Design, System Integration
+      - label: Software & Tools
+        details: LabVIEW, Simulink, Excel, Microsoft Office, Google Workspace
+
+    projects:
+      - name: Autorotation Recovery Drone (Capstone)
+        date: Spring 2026
+        highlights:
+          - Led aerodynamic optimization (CasADi/IPOPT nonlinear programming) of a 3-blade autorotation system to maximize unpowered descent time for a 3D-printed rotorcraft.
+          - Designed a semi-autonomous flight controller (ESP32-S3 + Betaflight) with Kalman-filtered altitude estimation and cascaded velocity control.
+          - Automated a CadQuery pipeline to generate parametric blade geometry from optimizer output; design won the competition.
+
+      - name: RoboMasters Combat Robot Competition
+        date: Fall 2024 - Summer 2026
+        highlights:
+          - Co-founded UTA's inaugural RoboMasters team and served as Drivetrain Lead, owning subsystem design intent, coordinating interfaces and schedules across team leads, and mentoring junior members.
+          - Designed and manufactured 4 custom drivetrain components using CAD modeling and Bambu 3D printers.
+          - Performed modal, stiffness, and strength simulations in ANSYS Workbench on the aluminum chassis to evaluate vibration behavior, deflection, and structural integrity.
+
+      - name: Autonomous UGV Development
+        date: Spring 2026
+        highlights:
+          - Developed a tracked autonomous vehicle progressing from GPS waypoint navigation to encoder-based dead reckoning and LiDAR localization using ROS2/Nav2.
+          - Integrated a Teensy 4.1, Intel NUC, motor encoders, and RPLIDAR A2; implemented differential-drive control, PID tuning, and a custom ROS2 serial bridge for motor commands.
+          - Designed and iterated drivetrain components and sensor mounts in SolidWorks, resolving mechanical failures through load-path analysis, print-orientation changes, and reinforced hardware.
+          - Achieved reliable multi-waypoint navigation using SLAM Toolbox, AMCL localization, and Nav2 path planning and obstacle avoidance.
+
+    education:
+      - institution: University of Texas at Arlington
+        area: Mechanical Engineering
+        degree: Bachelor of Science
+        start_date: 2022-08
+        end_date: present
+        highlights:
+          - "GPA: 3.6"
+          - Pi Tau Sigma Honor Society Member
+
+    professional_experience:
+      - company: Lockheed Martin
+        position: Mechanical Engineer CWEP
+        start_date: 2025-07
+        end_date: present
+        highlights:
+          - Supported life-cycle development of complex electromechanical systems for HIMARS and M270 MLRS platforms, balancing performance, schedule, and stakeholder requirements.
+          - Interpreted customer and program requirements to support design decisions and resource prioritization across engineering teams.
+          - Coordinated with mechanical, electrical, and manufacturing stakeholders to align system changes with delivery timelines.
+          - Analyzed mechanical and electrical system issues to assess operational risk and recommend corrective actions.
+          - Developed 3D models and engineering documentation to communicate design intent across teams.
+
+design:
+  theme: engineeringresumes
+  page:
+    size: us-letter
+    top_margin: 0.45in
+    bottom_margin: 0.45in
+    left_margin: 0.55in
+    right_margin: 0.55in
+    show_footer: false
+    show_top_note: false
+  colors:
+    body: rgb(20, 20, 20)
+    name: rgb(0, 55, 100)
+    headline: rgb(20, 20, 20)
+    connections: rgb(20, 20, 20)
+    section_titles: rgb(0, 55, 100)
+    links: rgb(0, 75, 150)
+  typography:
+    alignment: left
+    line_spacing: 0.5em
+    font_family:
+      body: Source Sans 3
+      name: Source Sans 3
+      headline: Source Sans 3
+      connections: Source Sans 3
+      section_titles: Source Sans 3
+    font_size:
+      body: 9.5pt
+      name: 27pt
+      headline: 10.5pt
+      connections: 9pt
+  templates:
+    normal_entry:
+      date_and_location_column: '**DATE**'
+    education_entry:
+      date_and_location_column: '**DATE**'
+    experience_entry:
+      date_and_location_column: '**DATE**'
+
+

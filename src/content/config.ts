@@ -11,6 +11,11 @@ const projectCollection = defineCollection({
         githubUrl: z.string().optional(),
         videoUrl: z.string().optional(),
         sortOrder: z.number().optional(),
+        role: z.string().optional(),
+        startDate: z.string().optional(),
+        endDate: z.string().optional(),
+        ownership: z.array(z.string()).optional(),
+        resumeHighlights: z.array(z.string()).optional(),
     }),
 });
 

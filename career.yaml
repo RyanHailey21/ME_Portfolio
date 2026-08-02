@@ -1,0 +1,47 @@
+profile:
+  name: Ryan Hailey
+  location: Mansfield, TX
+  headline: Mechanical Engineering Student - Robotics and Automation
+  email: ryanmhailey1@gmail.com
+  phone: "+1-817-975-1928"
+  website: https://ryanhailey21.github.io/ME_Portfolio
+  linkedin: https://www.linkedin.com/in/ryan-hailey-a96070344
+  expected_graduation: null # Confirm before using; the current resume only says "present."
+
+education:
+  - institution: University of Texas at Arlington
+    degree: Bachelor of Science
+    area: Mechanical Engineering
+    start_date: 2022-08
+    end_date: present
+    gpa: 3.6
+    honors:
+      - Pi Tau Sigma Honor Society Member
+
+experience:
+  - organization: Lockheed Martin
+    role: Mechanical Engineer CWEP
+    start_date: 2025-07
+    end_date: present
+    confidentiality: restricted
+    public_summary:
+      - Supported life-cycle development of complex electromechanical systems.
+      - Interpreted customer and program requirements to support engineering decisions.
+      - Coordinated across mechanical, electrical, and manufacturing stakeholders.
+      - Analyzed system issues to assess operational risk and recommend corrective actions.
+      - Developed 3D models and engineering documentation to communicate design intent.
+    disclosure_notes:
+      - Do not add program, platform, subsystem, performance, schedule, customer, or technical details unless Ryan explicitly approves them for the intended audience.
+
+targets:
+  - mechanical design
+  - mechatronics
+  - robotics hardware
+  - controls
+  - integration and test
+
+source_notes:
+  last_verified: 2026-08-02
+  resume_snapshot: resume/Ryan_Hailey_CV.pdf
+  notes:
+    - Facts were transcribed from the approved resume snapshot; project details should be checked against the relevant MDX file.

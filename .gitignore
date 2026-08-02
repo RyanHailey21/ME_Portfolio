@@ -22,5 +22,9 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# local validation artifacts
+tmp/
+resume/rendercv_output/
+
 # local project instructions, not for public repo
 CLAUDE.md
