@@ -32,4 +32,4 @@ npm run build
 npm run preview
 ```
 
-The site is built with Astro 5, MDX, and Tailwind CSS and deployed to GitHub Pages.
+The site is built with Astro 7, MDX, and Tailwind CSS 4 and deployed to GitHub Pages. Local development and deployment require Node.js 22.12 or newer.

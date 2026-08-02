@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+
 const baseUrl = import.meta.env.BASE_URL;
 
 export interface Props {
   projects: {
     title: string;
     description: string;
-    imageSrc: string;
+    image: ImageMetadata;
     tags: string[];
     slug: string;
   }[];
@@ -36,8 +38,8 @@ const total = projects.length;
 
             <!-- Image -->
             <a href={`${baseUrl}/projects/${project.slug}`} class="block overflow-hidden bg-ink-card">
-              <img
-                src={project.imageSrc}
+              <Image
+                src={project.image}
                 alt={project.title}
                 class="w-full h-full object-cover aspect-[4/3] lg:aspect-auto lg:h-full"
               />
